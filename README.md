@@ -78,5 +78,30 @@ Obecnie nie ma źródła, z którego można by było czerpać dane potrzebne do 
 3.	CZAS TRWANIA
 
         3.1	HARMONOGRAM
+        
+       
+
+![Harmonogram](https://raw.githubusercontent.com/marlej1/Aplikacka-przyjazna-rodzicom/master/Harmonogram.PNG)
+
+4	SZACOWANY BUDŻET
+
+        4.1	FUNDUSZE I SPOSOBY FINANSOWANIA
+        
+        
+W tej  chwili projekt nie ma zewnętrznego finanasowania. Wszelkie koszy związanie z treningami, sprzętem są pokrywane przez wyłącznie przez twórcę tego projekt.
+
+5.	ORGANIZACJA  - ROLE I ZADANIA
+
+
+ Na obecną chwilę jedyną osobą zaangażowaną w projekt jest jego twórca i autor tego dokumentu.
+ 
+ 
+6.	PZYPADKI UŻYCIA
+
+Aktor | Użytkownik | Rozszerzenia
+------------ | ------------- | ------
+Warunek Początkowy | Użytkownik jest zalogowany dos systemu. Użytkownik zobaczyć  miejsca w jego okolicy, które należą do intersującej go kategorii | -
+Warunek Końcowy|Na ekranie widać przeczywistą pozycję urządzenia/użytkownika. Zaznaczone są wszystkie miejsca w promieniu kilkuse metrów, które należą do intersującej go kategorii.| -
+Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li>Użytkownik mu<li> </li></ol>| -
 
 
