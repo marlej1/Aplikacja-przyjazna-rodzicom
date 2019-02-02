@@ -98,10 +98,34 @@ W tej  chwili projekt nie ma zewnętrznego finanasowania. Wszelkie koszy związa
  
 6.	PZYPADKI UŻYCIA
 
+<b><p>A. Filtrowanie miejsc pod względem na kategorii</p></b>
+
+
+Aktor | Użytkownik | Rozszerzenia
+------------ | ------------- | ------
+Warunek Początkowy | Użytkownik nie musi być  zalogowany dos systemu. Użytkownik cche zobaczyć miejsca w jego okolicy, które należą do intersującej go kategorii | -
+Warunek Końcowy|Na ekranie widać przeczywistą pozycję urządzenia/użytkownika. Zaznaczone są wszystkie miejsca w promieniu kilkuse metrów | -
+Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li><li> System filtruje wyniki zgodnie za zapytaniem użytkownika</li><li> Na ekranie zostają wyświetlone wyniki z z ikonkami  przypisanymi do odpowiednich kategorii</li></ol>| -
+
+<b><p>B. Dodawanie miejsc do bazy danych(Użytkownik)</p></b>
+
+
+Aktor | Użytkownik | Rozszerzenia
+------------ | ------------- | ------
+Warunek Początkowy | Użytkowni musi być zalogowany do systemu. Użytkownik chce dodać nowe miejsce, które do tej pory nie jest widoczneo na mapie| -
+Warunek Końcowy|Nowe miejsce wraz z ze wszyystkimi wymaganami danymi zostają dodane do bazy danych.| -
+Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li>Użytkownik mu<li> </li></ol>| -
+
+
+<b><p>C. Dodawanie miejsc do bazy danych(Administrator)</p></b>
+
+
 Aktor | Użytkownik | Rozszerzenia
 ------------ | ------------- | ------
 Warunek Początkowy | Użytkownik jest zalogowany dos systemu. Użytkownik zobaczyć  miejsca w jego okolicy, które należą do intersującej go kategorii | -
 Warunek Końcowy|Na ekranie widać przeczywistą pozycję urządzenia/użytkownika. Zaznaczone są wszystkie miejsca w promieniu kilkuse metrów, które należą do intersującej go kategorii.| -
 Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li>Użytkownik mu<li> </li></ol>| -
+
+
 
 
