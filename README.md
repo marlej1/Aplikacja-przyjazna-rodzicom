@@ -6,19 +6,19 @@
 Spis treśći
 
 
-1.  ZARYS PROJEKTU	
-2.  UZASADNIENIE
-    1.  Dlaczego nasza aplikacja to dobry pomysł?	   
-3.	ZAKRES	
+1.  WSTĘP
+    1.  Cel karty projektu
+    2. Zarys projektu
+    3. Uzasadnienie biznesowe   
+2.	ZAKRES	
     1.	Cele	
-    2.	Ogólne wymagania	
-    3.	Zakres projektu	
-4.	CZAS TRWANIA	
+    2.	Wymagania funkcjonalne	
+3.	CZAS TRWANIA	
     1.	Harmonogram	
     2.	Etapy	
-5.	SZACOWANY BUDŻET	
+4.	SZACOWANY BUDŻET	
     1.	Fundusze	
-6.	ORGANIZCJA PROJEKTU	
+5.	ORGANIZCJA PROJEKTU	
     1.	Podział obowiązków	
     2.	Osoba zaangażowana w projekt
   
@@ -96,7 +96,7 @@ W tej  chwili projekt nie ma zewnętrznego finanasowania. Wszelkie koszy związa
  Na obecną chwilę jedyną osobą zaangażowaną w projekt jest jego twórca i autor tego dokumentu.
  
  
-6.	PZYPADKI UŻYCIA
+<h3><b> DODATEK A: PRZYPADKI UŻYCIA	</b></h3>
 
 <b><p>A. Filtrowanie miejsc pod względem na kategorii</p></b>
 
@@ -137,6 +137,11 @@ Warunek Początkowy | Użykownik chce dostać się w najkrótszym czasei do wybr
 Warunek Końcowy|Aplikacja pokazuje propozycje w jakie można dotrzeć do wybranego miejsca | - 
 Główny scenariusz powodzenia|<ol><li>Użytkownik znajduje miejsce, do którego chciałby dotrzeć</li><li>Użytkownik wybiera sposób , w jaki chciałbym dotrzeć do wybranego miejsca(piechotą, komunikacją publiczną, samochodem)</li><li>Aplikacja sprawdza możliwe trasy dojazdu i proponuje 2-3 najbardzie dogodne</li></ol>| -
 
+
+<h3><b> DODATEK B: DIAGRAM KLAS	</b></h3>
+
+
+![Image of Yaktocat](https://raw.githubusercontent.com/marlej1/Aplikacka-przyjazna-rodzicom/master/DiagramKlas.PNG)
 
 
 
