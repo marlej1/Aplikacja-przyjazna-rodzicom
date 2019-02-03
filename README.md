@@ -114,18 +114,28 @@ Aktor | Użytkownik | Rozszerzenia
 ------------ | ------------- | ------
 Warunek Początkowy | Użytkowni musi być zalogowany do systemu. Użytkownik chce dodać nowe miejsce, które do tej pory nie jest widoczne na mapie| -
 Warunek Końcowy|Nowe miejsce wraz z ze wszystkimi wymaganami danymi zostają dodane do bazy danych.| -
-Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik z menu wybiera formularz,który służy do dodawania nowych miejsc do bazy danych</li><li>System sprwadza poprawność danych. Wymagane dane to m in. nazwa, miejsca, adres(wraz z kodem pocztowym) i/lub współrzędne geograficzny. Przy dodawaniu miejsca należy wybrać przynajmniej jedną kategorię. </li><li> Przy dodawaniu miejsca będzie można załączyć, krótki opis, zdjęcia oraz ocena w skali od 1 do 5 </li></ol>| -
+Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik z menu wybiera formularz,który służy do dodawania nowych miejsc do bazy danych</li><li>System sprwadza poprawność danych. Wymagane dane to m in. nazwa, miejsca, adres(wraz z kodem pocztowym) i/lub współrzędne geograficzny. Przy dodawaniu miejsca należy wybrać przynajmniej jedną kategorię. </li><li> Przy dodawaniu miejsca będzie można załączyć, krótki opis, zdjęcia oraz ocena w skali od 1 do 5 </li><li>Po sprawdzeniu przez system poprawności danych administrator dostaje powiadomienie o nowym miejscu</li><li>Po sprawdzeniu przez system poprawności danych administrator dostaje powiadomienie o nowym miejscu</li></ol>| -
 
 
 
-<b><p>C. Dodawanie miejsc do bazy danych(Administrator)</p></b>
+<b><p>C. Dodawanie miejsc do bazy danych i akceptacja propoycji użytkowników(Administrator)</p></b>
+
+
+Aktor | Administrator | Rozszerzenia
+------------ | ------------- | ------
+Warunek Początkowy | Administrator cche zaakceptować miejsce zaproponowane przez użytkownika lub sam dodać nowe miejsce | -
+Warunek Końcowy|Miejsce zostaje zaakceptowane i dodane do bazy danych | -
+Główny scenariusz powodzenia|<ol><li>Użytkownik loguje się do panelu administratora</li><li>Administrator sprawdza czy dane nadają się do publikacji(np . czy nie zawierają obraźliwych treści)</li><li>Jeśli wszystko się zgadza, administrator klika przycis akceptuj </li><li> Nowa propozycja zostaja dodan ado bazy danych. Powinna w jak najszybszym czasie poajawić się na ekranie</li></ol>| -
+
+
+<b><p>C. Znajdowania najkrószej drogi do wybranego miejsca</p></b>
 
 
 Aktor | Użytkownik | Rozszerzenia
 ------------ | ------------- | ------
-Warunek Początkowy | Użytkownik jest zalogowany dos systemu. Użytkownik zobaczyć  miejsca w jego okolicy, które należą do intersującej go kategorii | -
-Warunek Końcowy|Na ekranie widać przeczywistą pozycję urządzenia/użytkownika. Zaznaczone są wszystkie miejsca w promieniu kilkuse metrów, które należą do intersującej go kategorii.| -
-Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li>Użytkownik mu<li> </li></ol>| -
+Warunek Początkowy | Użykownik chce dostać się w najkrótszym czasei do wybranego przez siebie miejsca | -
+Warunek Końcowy|Aplikacja pokazuje propozycje w jakie można dotrzeć do wybranego miejsca | - 
+Główny scenariusz powodzenia|<ol><li>Użytkownik znajduje miejsce, do którego chciałby dotrzeć</li><li>Użytkownik wybiera sposób , w jaki chciałbym dotrzeć do wybranego miejsca(piechotą, komunikacją publiczną, samochodem)</li><li>Aplikacja sprawdza możliwe trasy dojazdu i proponuje 2-3 najbardzie dogodne</li></ol>| -
 
 
 
