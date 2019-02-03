@@ -112,9 +112,10 @@ Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użyt
 
 Aktor | Użytkownik | Rozszerzenia
 ------------ | ------------- | ------
-Warunek Początkowy | Użytkowni musi być zalogowany do systemu. Użytkownik chce dodać nowe miejsce, które do tej pory nie jest widoczneo na mapie| -
-Warunek Końcowy|Nowe miejsce wraz z ze wszyystkimi wymaganami danymi zostają dodane do bazy danych.| -
-Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik wybiera z wysuwanego  menu, które znajduje się po lewej stronie ekranu, jedną lub kilka  kategorii(Aplikacja zakłada możliwość mieszania katgorii). </li>Użytkownik mu<li> </li></ol>| -
+Warunek Początkowy | Użytkowni musi być zalogowany do systemu. Użytkownik chce dodać nowe miejsce, które do tej pory nie jest widoczne na mapie| -
+Warunek Końcowy|Nowe miejsce wraz z ze wszystkimi wymaganami danymi zostają dodane do bazy danych.| -
+Główny scenariusz powodzenia|<ol><li>Jeśli nie jest otwarty widok mapy, użytkownik otwiera go.</li><li>Użytkownik z menu wybiera formularz,który służy do dodawania nowych miejsc do bazy danych</li><li>System sprwadza poprawność danych. Wymagane dane to m in. nazwa, miejsca, adres(wraz z kodem pocztowym) i/lub współrzędne geograficzny. Przy dodawaniu miejsca należy wybrać przynajmniej jedną kategorię. </li><li> Przy dodawaniu miejsca będzie można załączyć, krótki opis, zdjęcia oraz ocena w skali od 1 do 5 </li></ol>| -
+
 
 
 <b><p>C. Dodawanie miejsc do bazy danych(Administrator)</p></b>
