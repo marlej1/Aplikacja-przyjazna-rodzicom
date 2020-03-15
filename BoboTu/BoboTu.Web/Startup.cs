@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BoboTu.Data;
+using BoboTu.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace BoboTu.Web
         {
 
             services.AddDbContext<BoboTuDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BoboTuConnection")));
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddControllers();
         }
 
