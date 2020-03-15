@@ -35,7 +35,7 @@ namespace BoboTu.Web.Controllers
                 UserName = userDto.UserName
             };
 
-            var createdUser = _authRepository.Register(userToCreate, userDto.Password);
+            var createdUser = await _authRepository.Register(userToCreate, userDto.Password);
 
             return StatusCode(201);
 
