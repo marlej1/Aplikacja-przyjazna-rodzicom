@@ -18,15 +18,15 @@ namespace BoboTu.Data.Repositories
         }
         public  async Task<User> Login(string username, string password)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.UserName == username);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == username);
 
             if(user == null)
             {
                 return null;
             }
 
-            if (!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
-                return null;
+            //if (!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
+            //    return null;
 
 
             return user;
@@ -56,8 +56,8 @@ namespace BoboTu.Data.Repositories
 
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            //user.PasswordHash = passwordHash;
+            //user.PasswordSalt = passwordSalt;
 
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();

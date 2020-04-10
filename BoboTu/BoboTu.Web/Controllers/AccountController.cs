@@ -10,27 +10,36 @@ using BoboTu.Data.Repositories;
 using BoboTu.Web.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BoboTu.Web.Controllers
 {
-
+    
     [ApiController]
     [Route("api/account")]
     public class AccountController : ControllerBase
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        
 
-        public AccountController(IAuthRepository authRepository, IConfiguration config)
+        public AccountController(IAuthRepository authRepository,
+            IConfiguration config,
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _authRepository = authRepository;
             _config = config;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userDto)
         {
@@ -50,19 +59,42 @@ namespace BoboTu.Web.Controllers
 
 
         }
+        [AllowAnonymous]
         [HttpPost("login")]
 
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-            var userFromRepo = await _authRepository.Login(userForLoginDto.UserName, userForLoginDto.Password);
+            var user = await _userManager.FindByNameAsync(userForLoginDto.UserName);
 
-            if (userFromRepo == null)
-                return Unauthorized();
+            var result = await _signInManager.CheckPasswordSignInAsync(user, userForLoginDto.Password, false);
 
-            var claims = new []
+
+            if (result.Succeeded)
             {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.UserName)
+
+                // dodać automappera _mapper i zrócić go 
+                var appUser = user;
+
+               
+
+              //  var userToReturn = _mapper.Map<UserForListDto>(appUser);
+
+                return Ok(new
+                {
+                    token = GenerateJwtToken(appUser),
+                    appUser
+                });
+            }
+
+            return Unauthorized();
+        }
+
+        private string GenerateJwtToken(User appUser)
+        {
+            var claims = new[]
+           {
+                new Claim(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
+                new Claim(ClaimTypes.Name, appUser.UserName)
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
@@ -79,15 +111,14 @@ namespace BoboTu.Web.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new
-            {
-                token = tokenHandler.WriteToken(token)
-            });
+            return tokenHandler.WriteToken(token);
 
         }
+    
+
+       
 
         [HttpGet("test")]
-        [Authorize]
 
         public async Task<IActionResult> Test()
         {
