@@ -23,18 +23,16 @@ namespace BoboTu.Web.Controllers
     [Route("api/account")]
     public class AccountController : ControllerBase
     {
-        private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
 
-        public AccountController(IAuthRepository authRepository,
+        public AccountController(
             IConfiguration config,
             UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
-            _authRepository = authRepository;
             _config = config;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -43,19 +41,34 @@ namespace BoboTu.Web.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userDto)
         {
-            userDto.UserName = userDto.UserName.ToLower();
+            //userDto.UserName = userDto.UserName.ToLower();
 
-            if (await _authRepository.UserExists(userDto.UserName))
-                return BadRequest("Użytkownik już isntnieje");
+            //if (await _authRepository.UserExists(userDto.UserName))
+            //    return BadRequest("Użytkownik już isntnieje");
+
+
 
             var userToCreate = new User()
             {
-                UserName = userDto.UserName
+                UserName = userDto.UserName            
             };
 
-            var createdUser = await _authRepository.Register(userToCreate, userDto.Password);
+            var result = await  _userManager.CreateAsync(userToCreate, userDto.Password);
 
-            return StatusCode(201);
+            if (result.Succeeded)
+            {
+
+                //zwróicić  userToreturn i zwrócić jako  createdAtRoute
+                return StatusCode(201);
+
+            }
+
+            return BadRequest(result.Errors);
+
+
+
+
+
 
 
         }

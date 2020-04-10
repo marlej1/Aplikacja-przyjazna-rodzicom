@@ -64,7 +64,6 @@ namespace BoboTu.Web
             });
 
             services.AddDbContext<BoboTuDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BoboTuConnection")));
-            services.AddScoped<IAuthRepository, AuthRepository>();
 
 
             services.AddControllers(options=> 
