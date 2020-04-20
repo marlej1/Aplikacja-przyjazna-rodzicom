@@ -50,6 +50,12 @@ namespace BoboTu.Web
             builder.AddRoleManager<RoleManager<Role>>();
             builder.AddSignInManager<SignInManager<User>>();
 
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+                opt.AddPolicy("Moderator", policy => policy.RequireRole("Moderator"));
+            });
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {

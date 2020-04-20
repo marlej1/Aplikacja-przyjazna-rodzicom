@@ -30,8 +30,8 @@ namespace BoboTu.Web
                     var context = services.GetRequiredService<BoboTuDbContext>();
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
-                //    context.Database.Migrate();
-                    Seed.SeedUsers(userManager);
+                     context.Database.Migrate();
+                    Seed.SeedUsers(userManager, roleManager);
                 }
                 catch (Exception ex)
                 {

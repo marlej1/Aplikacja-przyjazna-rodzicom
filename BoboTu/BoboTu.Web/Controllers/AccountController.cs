@@ -102,13 +102,21 @@ namespace BoboTu.Web.Controllers
             return Unauthorized();
         }
 
-        private string GenerateJwtToken(User appUser)
+        private async Task<string> GenerateJwtToken(User appUser)
         {
-            var claims = new[]
+            var claims = new List<Claim>
            {
                 new Claim(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
                 new Claim(ClaimTypes.Name, appUser.UserName)
             };
+
+
+            var roles = await _userManager.GetRolesAsync(appUser);
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
@@ -130,12 +138,28 @@ namespace BoboTu.Web.Controllers
     
 
        
-
+        [AllowAnonymous]
         [HttpGet("test")]
 
         public async Task<IActionResult> Test()
         {
             return Ok("Masz uprawnienia");
+        }
+
+        [Authorize(Policy ="Admin")]
+        [HttpGet("testAdmin")]
+
+        public async Task<IActionResult> testAdmin()
+        {
+            return Ok("Masz uprawnienia");
+        }
+
+        [Authorize(Roles = "Member")]
+        [HttpGet("testMember")]
+
+        public async Task<IActionResult> testMember()
+        {
+            return Ok("testMember");
         }
     }
 }
