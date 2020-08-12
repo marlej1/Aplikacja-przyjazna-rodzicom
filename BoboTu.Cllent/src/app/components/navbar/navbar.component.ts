@@ -1,7 +1,11 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, TemplateRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'app/Auth/login/login.component';
+import { AuthService } from 'app/Auth/login/auth.service';
+import { RegisterComponent } from 'app/Auth/login/register/register.component';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +18,22 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    modalRef: BsModalRef;
+    UserName:string;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef,
+         private router: Router,
+         private modalService: BsModalService,
+         public authService:AuthService
+         ) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+
+
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -122,4 +135,28 @@ export class NavbarComponent implements OnInit {
       }
       return 'Strona główna';
     }
+
+    openLoginModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(LoginComponent);
+      }
+
+      logOut(template: TemplateRef<any>){
+          localStorage.removeItem('token');
+          this.modalRef = this.modalService.show(template,  Object.assign({}, { class: 'modal-sm' }));
+      }
+
+      loggedIn() {
+         return this.authService.loggedIn();
+      }
+
+    //  get getUserName():string{
+    //     this.authService.decodedToken.unique_name
+    //      let user  = JSON.parse(localStorage.getItem('user'));
+    //      return user?.userName;
+    //   }
+
+      openRegisterModal(){
+        this.modalRef = this.modalService.show(RegisterComponent);
+
+      }
 }

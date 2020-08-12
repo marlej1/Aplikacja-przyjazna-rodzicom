@@ -11,6 +11,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { MainPageComponent } from 'app/main-page/main-page.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,11 +23,14 @@ import { MainPageComponent } from 'app/main-page/main-page.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   declarations: [
     MainPageComponent,
 
+  ],
+  providers:[
+    
   ]
 })
 

@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using BoboTu.Data;
 using BoboTu.Data.Models;
-using BoboTu.Data.Repositories;
 using BoboTu.Web.Dtos;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BoboTu.Web.Controllers
 {
-    
+
     [ApiController]
     [Route("api/account")]
     public class AccountController : ControllerBase
@@ -77,7 +72,13 @@ namespace BoboTu.Web.Controllers
 
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+
+
             var user = await _userManager.FindByNameAsync(userForLoginDto.UserName);
+            if(user == null)
+            {
+                return Unauthorized();
+            }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, userForLoginDto.Password, false);
 
@@ -94,8 +95,8 @@ namespace BoboTu.Web.Controllers
 
                 return Ok(new
                 {
-                    token = GenerateJwtToken(appUser),
-                    appUser
+                    token = await GenerateJwtToken(appUser),
+                    user = appUser
                 });
             }
 

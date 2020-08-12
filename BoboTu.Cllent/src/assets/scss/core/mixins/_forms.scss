@@ -70,86 +70,86 @@
   }
 
   // override BS and keep the border-color normal/grey so that overlaid focus animation draws attention
-  .form-control {
-    // underline animation color on focus
-    $underline-background-image: linear-gradient(
-        to top,
-        $label-color-focus 2px,
-        fade-out($label-color-focus, 1) 2px
-      ),
-      linear-gradient(
-        to top,
-        $line-color 1px,
-        fade-out($line-color, 1) 1px
-      );
-    $underline-background-image-invalid: linear-gradient(
-        to top,
-        $bmd-invalid-underline 2px,
-        fade-out($bmd-invalid-underline, 1) 2px
-      ),
-      linear-gradient(
-        to top,
-        $line-color 1px,
-        fade-out($line-color, 1) 1px
-      );
-    $underline-background-image-readonly: linear-gradient(
-        to top,
-        $bmd-readonly-underline 1px,
-        fade-out($bmd-readonly-underline, 1) 1px
-      ),
-      linear-gradient(
-        to top,
-        $line-color 1px,
-        fade-out($line-color, 1) 1px
-      );
-    $underline-background-image-disabled: linear-gradient(
-      to right,
-      $line-color 0%,
-      $line-color 30%,
-      transparent 30%,
-      transparent 100%
-    );
+  // .form-control {
+  //   // underline animation color on focus
+  //   $underline-background-image: linear-gradient(
+  //       to top,
+  //       $label-color-focus 2px,
+  //       fade-out($label-color-focus, 1) 2px
+  //     ),
+  //     linear-gradient(
+  //       to top,
+  //       $line-color 1px,
+  //       fade-out($line-color, 1) 1px
+  //     );
+  //   $underline-background-image-invalid: linear-gradient(
+  //       to top,
+  //       $bmd-invalid-underline 2px,
+  //       fade-out($bmd-invalid-underline, 1) 2px
+  //     ),
+  //     linear-gradient(
+  //       to top,
+  //       $line-color 1px,
+  //       fade-out($line-color, 1) 1px
+  //     );
+  //   $underline-background-image-readonly: linear-gradient(
+  //       to top,
+  //       $bmd-readonly-underline 1px,
+  //       fade-out($bmd-readonly-underline, 1) 1px
+  //     ),
+  //     linear-gradient(
+  //       to top,
+  //       $line-color 1px,
+  //       fade-out($line-color, 1) 1px
+  //     );
+  //   $underline-background-image-disabled: linear-gradient(
+  //     to right,
+  //     $line-color 0%,
+  //     $line-color 30%,
+  //     transparent 30%,
+  //     transparent 100%
+  //   );
 
-    // bg image is always there, we just need to reveal it
-    &,
-    .is-focused & {
-      background-image: $underline-background-image;
-    }
+  //   // bg image is always there, we just need to reveal it
+  //   &,
+  //   .is-focused & {
+  //     background-image: $underline-background-image;
+  //   }
 
-    &:invalid {
-      background-image: $underline-background-image-invalid;
-    }
+  //   &:invalid {
+  //     background-image: $underline-background-image-invalid;
+  //   }
 
-    &:read-only {
-      background-image: $underline-background-image-readonly;
-    }
+  //   &:read-only {
+  //     background-image: $underline-background-image-readonly;
+  //   }
 
-    @include bmd-disabled() {
-      background-image: $underline-background-image-disabled;
-      background-repeat: repeat-x;
-      background-size: 3px 1px;
-    }
+  //   @include bmd-disabled() {
+  //     background-image: $underline-background-image-disabled;
+  //     background-repeat: repeat-x;
+  //     background-size: 3px 1px;
+  //   }
 
-    // allow underline focus image and validation images to coexist
-    &.form-control-success {
-      &,
-      .is-focused & {
-        background-image: $underline-background-image, $form-icon-success;
-      }
-    }
-    &.form-control-warning {
-      &,
-      .is-focused & {
-        background-image: $underline-background-image, $form-icon-warning;
-      }
-    }
-    &.form-control-danger {
-      &,
-      .is-focused & {
-        background-image: $underline-background-image, $form-icon-danger;
-      }
-    }
-  }
+  //   // allow underline focus image and validation images to coexist
+  //   &.form-control-success {
+  //     &,
+  //     .is-focused & {
+  //       background-image: $underline-background-image, $form-icon-success;
+  //     }
+  //   }
+  //   &.form-control-warning {
+  //     &,
+  //     .is-focused & {
+  //       background-image: $underline-background-image, $form-icon-warning;
+  //     }
+  //   }
+  //   &.form-control-danger {
+  //     &,
+  //     .is-focused & {
+  //       background-image: $underline-background-image, $form-icon-danger;
+  //     }
+  //   }
+  // }
 
   // may or may not be a form-group or bmd-form-group
   .is-focused {
@@ -168,9 +168,9 @@
     }
 
     // Set the border and box shadow on specific inputs to match
-    .form-control {
-      border-color: $border-color;
-    }
+    // .form-control {
+    //   border-color: $border-color;
+    // }
 
     // Set validation states also for addons
     //.input-group-addon {

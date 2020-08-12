@@ -17,9 +17,16 @@ namespace BoboTu.Data
     {
         public BoboTuDbContext(DbContextOptions<BoboTuDbContext> options) : base(options) { }
 
+        public DbSet<Venue> Venues { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<VenueFacility> VenueFacilities { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
 
             builder.Entity<UserRole>(userRole =>
             {
@@ -33,18 +40,22 @@ namespace BoboTu.Data
                 userRole.HasOne(ur => ur.User)
                .WithMany(u => u.UserRoles)
                .HasForeignKey(ur => ur.UserId).IsRequired();
-            }
+            });
 
-            ); 
+            builder.Entity<VenueFacility>()
+       .HasKey(vf => new { vf.VenueId, vf.FacilityId });
+            builder.Entity<VenueFacility>()
+                .HasOne(vf => vf.Facility)
+                .WithMany(f => f.VenueFacilities)
+                .HasForeignKey(vf => vf.FacilityId);
+            builder.Entity<VenueFacility>()
+                .HasOne(vf => vf.Venue)
+                .WithMany(v => v.VenueFacilities)
+                .HasForeignKey(vf => vf.VenueId);
 
 
 
-
-
-
-
-             
-
+         
 
         }
 

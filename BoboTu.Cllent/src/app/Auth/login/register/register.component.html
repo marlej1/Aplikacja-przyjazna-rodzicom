@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Zarejestruj się</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input formControlName="userName" type="text" value="" id="login" placeholder="" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="form-group">
+                        <label for="password">Hasło</label>
+                        <input formControlName="password" type="password" value="" placeholder="" id="password" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="form-group">
+                        <label for="password">Potwierdź hasło</label>
+                        <input formControlName="confirmPassword" type="password" value="" placeholder="" id="password" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="registerForm.get('confirmPassword').errors?.confirmPasswordValidator">
+                Podane hasła nie są takie same
+              </div>
+
+            <div class="row">
+
+
+                <div class="offset-1">
+            <button mat-raised-button class="btn btn-warning" [disabled]="registerForm.invalid">Zarejstruj się</button>
+            <button mat-raised-button class="btn btn-danger"  (click)="registerForm.reset();bsModalRef.hide()">Anuluj</button>
+
+        </div>
+        </div>
+    </form>
+
+   
+  </div>

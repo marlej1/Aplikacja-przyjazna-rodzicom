@@ -25,37 +25,37 @@ form {
 //
 // Reference http://www.google.com/design/spec/components/text-fields.html
 // MDL implementation: http://www.getmdl.io/components/index.html#textfields-section
-.form-control{
-  background: $bmd-form-control-bg-repeat-y $bmd-form-control-bg-position;
-  background-size: $bmd-form-control-bg-size;
-  border: 0;
-  height: 36px;
-  transition: background 0s ease-out;
-  padding-left: 0;
-  padding-right: 0;
-  border-radius: 0;
-  font-size: $mdb-input-font-size-base;
+// .form-control{
+//   background: $bmd-form-control-bg-repeat-y $bmd-form-control-bg-position;
+//   background-size: $bmd-form-control-bg-size;
+//   border: 0;
+//   height: 36px;
+//   transition: background 0s ease-out;
+//   padding-left: 0;
+//   padding-right: 0;
+//   border-radius: 0;
+//   font-size: $mdb-input-font-size-base;
 
-  // The border bottom should be static in all states, the decorator will be animated over this.
-  &:focus,
-  .bmd-form-group.mat-focused & {
-    background-size: $bmd-form-control-bg-size-active;
-    //border-bottom: $input-btn-border-width solid $input-border-color;
-    transition-duration: 0.3s;
-  }
+//   // The border bottom should be static in all states, the decorator will be animated over this.
+//   &:focus,
+//   .bmd-form-group.mat-focused & {
+//     background-size: $bmd-form-control-bg-size-active;
+//     //border-bottom: $input-btn-border-width solid $input-border-color;
+//     transition-duration: 0.3s;
+//   }
 
-  @include material-placeholder() {
-      color: $mdb-input-placeholder-color;
-      font-weight: 400;
-      font-size: $mdb-input-font-size-base;
-}
+//   @include material-placeholder() {
+//       color: $mdb-input-placeholder-color;
+//       font-weight: 400;
+//       font-size: $mdb-input-font-size-base;
+// }
 
-  .has-white &{
-      @include material-placeholder(){
-          color: $white-color;
-      }
-  }
-}
+//   .has-white &{
+//       @include material-placeholder(){
+//           color: $white-color;
+//       }
+//   }
+// }
 
 
 
@@ -105,11 +105,11 @@ form {
 .has-white{
   @include bmd-form-color($white-color, $white-color, $white-color, $input-border-color-white);
 
-    .form-control{
-        &:focus{
-            color: $white-color;
-        }
-    }
+    // .form-control{
+    //     &:focus{
+    //         color: $white-color;
+    //     }
+    // }
 }
 
 .has-warning {
@@ -218,14 +218,14 @@ form {
 // default floating size/location without a form-group (will skip form-group styles, and just render default sizing variation) - IMPORTANT for non-form-group spacing such as radio/checkbox/switch
 @include bmd-form-size-variant($font-size-base, $bmd-label-top-margin-base, $input-padding-y, $bmd-form-line-height);
 
-select {
-  &,
-  &.form-control{
-    // Use vendor prefixes as `appearance` isn't part of the CSS spec. OSX doesn't obey the border-radius: 0 without this.
-    -moz-appearance: none;
-    -webkit-appearance: none;
-  }
-}
+// select {
+//   &,
+//   &.form-control{
+//     // Use vendor prefixes as `appearance` isn't part of the CSS spec. OSX doesn't obey the border-radius: 0 without this.
+//     -moz-appearance: none;
+//     -webkit-appearance: none;
+//   }
+// }
 
 // Input files - hide actual input - requires specific markup in the sample.
 //.bmd-form-group input[type=file] {
@@ -358,15 +358,15 @@ textarea{
     padding: 0 12px;
 }
 
-.form-control[disabled],
-fieldset[disabled] .form-control,
-.form-group .form-control[disabled],
-fieldset[disabled] .form-group .form-control{
-  background-color: transparent;
-  cursor: not-allowed;
-  border-bottom: 1px dotted $input-border-color;
-  background-repeat: no-repeat;
-}
+// .form-control[disabled],
+// fieldset[disabled] .form-control,
+// .form-group .form-control[disabled],
+// fieldset[disabled] .form-group .form-control{
+//   background-color: transparent;
+//   cursor: not-allowed;
+//   border-bottom: 1px dotted $input-border-color;
+//   background-repeat: no-repeat;
+// }
 
 
 
@@ -412,13 +412,13 @@ form .ng-valid{
   &.mat-focused .mat-form-field-label,
   .mat-focused .mat-form-field-label,
   .mat-form-field-label{
-    // color: #4caf50;
+     color: #4caf50;
   }
     .mat-input-underline{
-      // background-color: #4caf50;
+       background-color: #4caf50;
       height: 2px;
       .mat-input-ripple{
-        // background-color: #4caf50;
+         background-color: #4caf50;
       }
     }
 
