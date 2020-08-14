@@ -10,6 +10,7 @@ import { LoginComponent } from 'app/Auth/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
+import { NewVenueComponent } from './new-venue/new-venue.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from 'app/Auth/login/register/register.component';
     NavbarComponent,
     SidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewVenueComponent
 
   ],
   exports: [

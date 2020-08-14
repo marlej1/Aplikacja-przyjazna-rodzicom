@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { VenuesService } from 'app/Services/venues.service';
 import { Venue } from 'app/Models/Venue';
+import { VenueType } from 'app/Models/Enums';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'app/Auth/login/login.component';
+import { NewVenueComponent } from 'app/components/new-venue/new-venue.component';
 
 
 declare const google: any;
@@ -27,11 +31,17 @@ export class MainPageComponent implements OnInit {
     long1:number = 20.967026;
     addrMarker:any;
   venues: Venue[];
+  tempMarker: any = null;
 
-  constructor(private venuesService: VenuesService) { }
+  modalRef: BsModalRef;
+
+
+  constructor(private venuesService: VenuesService, private modalService: BsModalService) { }
 
   ngOnInit() {
 
+  
+    
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
               pos=>{
@@ -84,28 +94,34 @@ export class MainPageComponent implements OnInit {
       
     };
 
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+     this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    document.getElementById("map").addEventListener('onContextMenu', e => {
+      e.preventDefault();
+      return false;
+    })
+    
 
     this.venuesService.getVenues().subscribe(venues=>{    
       this.venues = venues;
-      console.log(this.venues);
       this.venues.forEach(v=>{
     var Latlng = new google.maps.LatLng(v.lattitude, v.longitude);
 
+
+        let iconUrl = this.getUrlcon(v.venueType);
         var marker = new google.maps.Marker({
           position: Latlng,
           title: v.name,
-      });
-      console.log(marker)
-  
-          marker.setMap(map);
+          icon:iconUrl
+      });  
+          marker.setMap(this.map);
       })
 
 
       
     },err=>{
-      console.log(err);
+       console.log(err);
     })
 
     let infoWindow = new google.maps.InfoWindow();
@@ -115,37 +131,82 @@ export class MainPageComponent implements OnInit {
     var marker = new google.maps.Marker({
         position: myLatlng,
         title: "Tu jesteś",
-   icon :'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+   icon :"https://img.icons8.com/bubbles/50/000000/walking.png"
     });
 
-  
-
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
+    marker.setMap(this.map);
 
 
-    // bounds.extend(marker.position);
+    this.map.addListener('click', e => {
 
-    // marker1.setMap(map);
+console.log('click');
+console.log(e.pixel.x, 'x');
+console.log(e.pixel.y, 'y');
 
-    // bounds.extend(marker1.position);
-    // map.fitBounds(bounds);
+
+
+
+    
+    if(this.tempMarker){
+      this.tempMarker.setMap(null);
+
+      this.tempMarker = null
+    }else{
+
+      this.tempMarker   = new google.maps.Marker({
+        position: new google.maps.LatLng(e.latLng.lat(), e.latLng.lng()),
+   icon :"https://img.icons8.com/doodle/48/000000/marker--v1.png",
+   
+    });
+
+      this.tempMarker.setMap(this.map);
+      this.tempMarker.addListener('rightclick',(e) => {
+       let infoWindow = new google.maps.InfoWindow();
+
+
+       
+ 
+       infoWindow.setContent(`<table class='context-menu' 
+       style='background-color: violet;cursor: pointer;'><tr><td id="addNewVenue">Dodaj nowe miejsce</td></tr></table>`);
+       // Open the window
+       infoWindow.open(this.map, this.tempMarker);
+
+       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+        document.getElementById(`addNewVenue`).addEventListener('click', () => {
+         this.openAddNewVenueModal();
+        });
+      });
+
+     
+      })
+    }
+    }) 
 
    
-
-
-
-    google.maps.event.addListener(marker, 'click', function () {
-        // Add HTML content for window
-        infoWindow.setContent(infoContent);
-        // Open the window
-        infoWindow.open(map, marker);
-      
-  })
-
-
-
 }
+
+  getUrlcon(venueType:VenueType) {
+
+    switch(venueType){
+      case VenueType.Restaurant:
+      return "https://img.icons8.com/bubbles/50/000000/restaurant.png"
+      case VenueType.Doctor:
+      return  "https://img.icons8.com/color/48/000000/doctor-male--v1.png"
+      case VenueType.Pharmacy:
+      return "https://img.icons8.com/color/48/000000/pharmacy-shop.png"
+      case VenueType.Playground:
+      return "https://img.icons8.com/color/48/000000/playground.png"
+      case VenueType.PlayingField:
+      return "https://img.icons8.com/office/40/000000/football2--v1.png"
+      
+      case VenueType.ShoppingCenter:
+      return "https://img.icons8.com/color/48/000000/shopping-basket.png"
+      case VenueType.ThemePark:
+        return "https://img.icons8.com/office/40/000000/dinosaur.png"
+        case VenueType.Toilet:
+        return "https://img.icons8.com/office/40/000000/toilet.png"
+    }  
+  }
  setMarkerOnAddress(address) {
 
 
@@ -228,23 +289,10 @@ export class MainPageComponent implements OnInit {
     return marker;
   }
 
+  openAddNewVenueModal(){
+    this.modalService.show(NewVenueComponent);
+  }
+
 }
 
-
-   // Set route of how to travel from point A to B
-      // directionsService.route(
-      //   {
-      //     origin: 'Wielicka 73, kraków',
-      //     destination: 'Wielicka 143, kraków',
-      //     travelMode: 'DRIVING'
-      //   },
-      //   function (response, status) {
-      //     if (status === 'OK') {
-      //       directionsRenderer.setDirections(response);
-      //       // Render directions on the map
-      //       directionsRenderer.setMap(map);
-      //     } else {
-      //       alert('Directions request failed due to ' + status);
-      //     }
-      //   });
 

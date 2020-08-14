@@ -4,8 +4,8 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
-import { AuthService } from 'app/Auth/login/auth.service';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
+import { AuthService } from 'app/Auth/login/auth.service';
 
 @Component({
   selector: 'app-navbar',
