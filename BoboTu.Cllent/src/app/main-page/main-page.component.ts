@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
 import { NewVenueComponent } from 'app/components/new-venue/new-venue.component';
 import { AuthService } from 'app/Auth/login/auth.service';
+import { CommunicationService } from 'app/Services/communication.service';
 
 
 declare const google: any;
@@ -40,7 +41,16 @@ export class MainPageComponent implements OnInit {
 
   constructor(private venuesService: VenuesService, 
     private modalService: BsModalService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private communicationService: CommunicationService) 
+    {
+      this.communicationService.refreshPage().subscribe
+      (
+        res =>{
+          this.displayMaps();
+        }
+      );
+     }
 
   ngOnInit() {
 

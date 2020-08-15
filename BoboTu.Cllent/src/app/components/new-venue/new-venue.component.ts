@@ -6,6 +6,7 @@ import { VenuesService } from 'app/Services/venues.service';
 import { AddRatingComponent } from '../add-rating/add-rating.component';
 import { VenueType, VenueTypeDisplay } from 'app/Models/Enums';
 import { AuthService } from 'app/Auth/login/auth.service';
+import { CommunicationService } from 'app/Services/communication.service';
 
 @Component({
   selector: 'app-new-venue',
@@ -19,7 +20,8 @@ export class NewVenueComponent implements OnInit {
     public facilitiesService:FacilitiesService,
     private venuesService: VenuesService,
     private modalService: BsModalService, 
-    private authService : AuthService ) { }
+    private authService : AuthService,
+    private communicationService: CommunicationService ) { }
     
 
   addNewVenueForm: FormGroup;
@@ -74,6 +76,8 @@ export class NewVenueComponent implements OnInit {
        if(confirm(`Nowe miejsce ${res.name} zostało dodane! Czy chcesz dodać swoją opinię o ocenę?`)){
         this.modalService.show(AddRatingComponent, {initialState});
 
+       }else{
+        this.communicationService.initiateMainPageRefresh()
        }
      }
    )
