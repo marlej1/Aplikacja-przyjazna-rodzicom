@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import { AuthService } from './Auth/login/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { FacilitiesService } from './Services/facilities.service';
+import { Facility } from './Models/Facility';
 
 
 @Component({
@@ -12,13 +14,22 @@ export class AppComponent {
 
   jwtHelper = new JwtHelperService();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private facilitiesService: FacilitiesService) {}
 
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+      console.log(this.authService.decodedToken.nameid);
+    
     }
+
+    this.facilitiesService.getFacilities().subscribe(
+      res =>{
+        this.facilitiesService.faciltiesCached = res;
+      }
+
+    )
    
   }
 

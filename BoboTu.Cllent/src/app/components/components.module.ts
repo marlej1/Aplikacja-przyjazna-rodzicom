@@ -11,6 +11,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
 import { NewVenueComponent } from './new-venue/new-venue.component';
+import { AddRatingComponent } from './add-rating/add-rating.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { NewVenueComponent } from './new-venue/new-venue.component';
     SidebarComponent,
     LoginComponent,
     RegisterComponent,
-    NewVenueComponent
+    NewVenueComponent,
+    AddRatingComponent
 
   ],
   exports: [

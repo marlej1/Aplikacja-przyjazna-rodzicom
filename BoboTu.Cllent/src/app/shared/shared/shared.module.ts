@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {MatSelectModule} from '@angular/material/select';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 
 
@@ -8,10 +10,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   declarations: [],
   imports: [
     CommonModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatSelectModule,
+    RatingModule.forRoot()
   ],
   exports:[
-    ModalModule
+    ModalModule,
+    MatSelectModule,
+    RatingModule
   ]
 })
 export class SharedModule { }

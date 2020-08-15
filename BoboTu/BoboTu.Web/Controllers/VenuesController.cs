@@ -8,6 +8,7 @@ using BoboTu.Data.Repositories;
 using BoboTu.Web.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoboTu.Web.Controllers
@@ -61,8 +62,6 @@ namespace BoboTu.Web.Controllers
         {
             var venueEntity = _mapper.Map<Venue>(venue);
 
-            venueEntity.Opinions.Add(_mapper.Map<Opinion>(venue.Opinion));
-            venueEntity.Ratings.Add(_mapper.Map<Rating>(venue.Rating));
 
             if (venue.FacilitiesIds.Any())
             {
@@ -91,6 +90,28 @@ namespace BoboTu.Web.Controllers
             return CreatedAtRoute("GetVenue",
                 new { venueId = venueToReturn.Id },
                 venueToReturn);
+        }
+
+        [HttpPatch("{venueId}")]
+        public async Task<ActionResult> UpdateVenue(int venueId,  JsonPatchDocument<VenueForUpdate> patchDocument)
+        {
+
+            var venueFromRepo = await _venueRepository.GetVenueAsync(venueId);
+
+            if (venueFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var venueToUpdate = _mapper.Map<VenueForUpdate>(venueFromRepo);
+
+            patchDocument.ApplyTo(venueToUpdate);
+
+            _mapper.Map(venueToUpdate, venueFromRepo);
+            await _venueRepository.SaveChanges();
+
+            return NoContent();
+
         }
 
 

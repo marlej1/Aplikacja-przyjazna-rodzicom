@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
 import { AuthService } from 'app/Auth/login/auth.service';
+import { AddRatingComponent } from '../add-rating/add-rating.component';
 
 @Component({
   selector: 'app-navbar',
@@ -142,6 +143,7 @@ export class NavbarComponent implements OnInit {
 
       logOut(template: TemplateRef<any>){
           localStorage.removeItem('token');
+          this.authService.decodedToken = null;
           this.modalRef = this.modalService.show(template,  Object.assign({}, { class: 'modal-sm' }));
       }
 

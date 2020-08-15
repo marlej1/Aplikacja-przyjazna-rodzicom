@@ -5,6 +5,7 @@ import { VenueType } from 'app/Models/Enums';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
 import { NewVenueComponent } from 'app/components/new-venue/new-venue.component';
+import { AuthService } from 'app/Auth/login/auth.service';
 
 
 declare const google: any;
@@ -32,11 +33,14 @@ export class MainPageComponent implements OnInit {
     addrMarker:any;
   venues: Venue[];
   tempMarker: any = null;
+  
 
   modalRef: BsModalRef;
 
 
-  constructor(private venuesService: VenuesService, private modalService: BsModalService) { }
+  constructor(private venuesService: VenuesService, 
+    private modalService: BsModalService,
+    private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -165,16 +169,39 @@ console.log(e.pixel.y, 'y');
 
 
        
+      let addVenueTr ='';
+       if(this.authService.decodedToken){
+       addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+       <td  id="addNewVenue">Dodaj nowe miejsce</td>
+       </tr>`
+       }
  
-       infoWindow.setContent(`<table class='context-menu' 
-       style='background-color: violet;cursor: pointer;'><tr><td id="addNewVenue">Dodaj nowe miejsce</td></tr></table>`);
+       infoWindow.setContent(`
+       <table class='context-menu' 
+       style='cursor: pointer;
+        margin:5px;
+        font-weight:normal
+        '>${addVenueTr}
+       <tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+       <td style='padding:4px'>Sprawdź jak dojechać do tego miejsca</td>
+       </tr>
+       </table>`);
+
+
        // Open the window
        infoWindow.open(this.map, this.tempMarker);
 
        google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
-        document.getElementById(`addNewVenue`).addEventListener('click', () => {
-         this.openAddNewVenueModal();
+
+      if(this.authService.decodedToken){
+        let addVenue = document.getElementById(`addNewVenue`);
+
+        addVenue.addEventListener('click', () => {
+        this.openAddNewVenueModal( this.tempMarker.getPosition().lat(), this.tempMarker.getPosition().lng());
         });
+
+      }
+    
       });
 
      
@@ -274,6 +301,9 @@ console.log(e.pixel.y, 'y');
         }
 }
 
+
+
+
  drawMarker(mapObject) {
     // Create a new marker since you may need more than one
     let marker = new google.maps.Marker({
@@ -289,8 +319,13 @@ console.log(e.pixel.y, 'y');
     return marker;
   }
 
-  openAddNewVenueModal(){
-    this.modalService.show(NewVenueComponent);
+  openAddNewVenueModal(lat:number, lng:number){
+    const initialState = {
+      list: [
+        {lat:lat, lng:lng}
+      ]
+    };
+    this.modalService.show(NewVenueComponent, {initialState});
   }
 
 }

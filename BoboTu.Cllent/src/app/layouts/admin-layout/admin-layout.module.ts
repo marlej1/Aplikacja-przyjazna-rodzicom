@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { MainPageComponent } from 'app/main-page/main-page.component';
+import { SharedModule } from 'app/shared/shared/shared.module';
 
 
 @NgModule({

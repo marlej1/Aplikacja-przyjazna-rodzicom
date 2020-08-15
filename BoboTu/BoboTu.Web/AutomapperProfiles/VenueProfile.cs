@@ -19,6 +19,8 @@ namespace BoboTu.Web.AutomapperProfiles
             });
 
             CreateMap<VenueForCreationDto, Venue>().ReverseMap();
+            CreateMap<VenueForUpdate, Venue>().ReverseMap();
+
             CreateMap<RatingDto, Venue>().ReverseMap();
             CreateMap<VenueForCreationDto, Venue>();
             CreateMap<RatingDto, Rating>().ReverseMap();

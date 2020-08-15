@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj nowe miejsce!</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form [formGroup]="addNewRatingAndOpinionForm" (ngSubmit)="addNewRatingAndOpinion()">
+  
+                <div class="row ">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <div>
+                            <label for="rating">Twoja ocena</label>
+                        </div>
+                            <rating formControlName="rating" id="rating"  [max]="6" name="rate" [readonly]="false"
+        
+        [titles]="['one','two','three']"></rating>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+
+                            <label for="opinion">Twoja opinia</label>
+                            <textarea formControlName="opinion" 
+                            type="text" value="" placeholder="" id="opinion" class="form-control">
+                        </textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+             
+    
+
+
+                <div class="offset-1">
+            <button mat-raised-button class="btn btn-warning" [disabled]="addNewRatingAndOpinionForm.invalid">Dodaj</button>
+        </div>
+    </form>
+  </div>

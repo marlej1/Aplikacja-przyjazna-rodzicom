@@ -14,8 +14,10 @@ export class Venue{
       description: string 
      averageRating:number 
       webPage: string 
+      houseNumber:number
       emailAddress: string 
       facilities:Array<FacilityType>
+      
        lattitude:number
        longitude:number;
      

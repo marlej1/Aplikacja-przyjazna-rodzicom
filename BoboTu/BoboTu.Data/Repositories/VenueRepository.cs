@@ -32,10 +32,15 @@ namespace BoboTu.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds)
+        public async Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds = null)
         {
             try
             {
+
+                if(facilitiesIds == null)
+                {
+                    return await _boboTuDb.Facilities.ToListAsync();
+                }
                 return await _boboTuDb.Facilities.Where(x => facilitiesIds.Contains(x.Id)).ToListAsync();
 
 
@@ -46,6 +51,11 @@ namespace BoboTu.Data.Repositories
                 throw;
             };    
            
+        }
+
+        public Task<IEnumerable<Facility>> GetFacilities()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Facility> GetFacility(int facilityId)

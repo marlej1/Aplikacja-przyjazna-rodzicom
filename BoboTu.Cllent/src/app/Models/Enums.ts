@@ -19,3 +19,27 @@ export enum FacilityType{
     ChildCare
 
 }
+
+export class VenueTypeDisplay{
+   static GetDisplayName(venueType: string):string{
+        switch(venueType){
+            case 'Doctor':
+                return'Lekarz';
+            case 'Pharmacy':
+                return'Apteka';
+            case 'Playground':
+                return'Plac zabaw'
+            case 'PlayingField':
+                return'Boisko';
+            case 'Restaurant':
+                return'Restauracja';
+            case 'ShoppingCenter':
+                return'Gelraria handlowa';
+                case 'ThemePark':
+                    return'Park rozrywki';    
+                    case 'Toilet':
+                        return'Publiczna toaleta';    
+        }
+    }
+
+}

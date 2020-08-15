@@ -1,1 +1,112 @@
-<p>new-venue works!</p>
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj nowe miejsce!</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addNewVenueForm" (ngSubmit)="addNewVenue()">
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group">
+
+                    <label for="name">Nazwa</label>
+                    <input formControlName="name" type="text" value="" id="name" placeholder="" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <fieldset>
+            <legend>Dane adresowe:</legend>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="city">Miasto</label>
+                        <input formControlName="city" type="text" value="" placeholder="" id="city" class="form-control" />
+                    </div>
+
+                </div>   
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="street">Ulica</label>
+                        <input formControlName="street" type="text" value="" placeholder="" id="street" class="form-control" />
+                    </div>
+
+                </div>   
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="houseNumber">Numer</label>
+                        <input formControlName="houseNumber" type="number" value="" placeholder="" id="houseNumber" class="form-control" />
+                    </div>
+
+                </div>          
+            </div>
+
+        </fieldset>
+    
+        
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="webPage">Strona www</label>
+                            <input formControlName="webPage" type="text" value="" placeholder="" id="webPage" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="emailAddress">Adres email</label>
+                            <input formControlName="emailAddress" type="text" value="" placeholder="" id="emailAddress" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+
+          
+
+                <div class="row ">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="facilitiesIds">Udogodnienia</label>
+                        <select id="facilitiesIds" formControlName="facilitiesIds" multiple  class="form-control">
+                           <option *ngFor="let facility of facilitiesService.faciltiesCached" value="{{facility.id}}">{{facility.name}}</option>
+                          </select>
+
+                    </div>
+                </div>
+
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="venueType">Rodzaj miejsca</label>
+                        <select id="venueType" formControlName="venueType"   class="form-control">
+                           <option *ngFor="let venueType of venueTypes" value="{{venueType.id}}">{{venueType.name}}</option>
+                          </select>
+
+                    </div>
+
+                    </div>
+            </div>
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="description">Krótki opis</label>
+                            <textarea formControlName="description" 
+                            type="text" value="" placeholder="" id="description" class="form-control">
+                        </textarea>
+                        </div>
+                    </div>
+                </div>
+
+             
+    
+
+
+                <div class="offset-1">
+            <button mat-raised-button class="btn btn-warning" [disabled]="addNewVenueForm.invalid">Dodaj</button>
+        </div>
+    </form>
+  </div>

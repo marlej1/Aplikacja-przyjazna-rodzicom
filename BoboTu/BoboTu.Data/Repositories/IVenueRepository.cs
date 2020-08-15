@@ -13,7 +13,7 @@ namespace BoboTu.Data.Repositories
         Task<Venue[]> GetAllVenuesAsync();
         Task<Venue> GetVenueAsync(int id);
         Task<bool> SaveChanges();
-        Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds);
+        Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds = null);
         Task<Facility> GetFacility(int facilityId);
     }
 }

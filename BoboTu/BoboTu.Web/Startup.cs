@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using System;
+using Newtonsoft.Json.Serialization;
 
 namespace BoboTu.Web
 {
@@ -83,14 +84,18 @@ namespace BoboTu.Web
             services.AddDbContext<BoboTuDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BoboTuConnection")));
 
 
-            services.AddControllers(options=> 
+            services.AddControllers(options =>
             {
                 var policy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
                 .Build();
 
                 options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddNewtonsoftJson(setupAction =>
+            {
+                setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
+                
 
          
         }
