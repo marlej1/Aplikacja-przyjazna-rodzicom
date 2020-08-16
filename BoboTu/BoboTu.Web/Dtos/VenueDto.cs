@@ -18,7 +18,8 @@ namespace BoboTu.Web.Dtos
     public  ICollection<RatingDto> Ratings { get; set; }
     public ICollection<OpinionDto> Opinions { get; set; }
     public List<FacilityDto> Facilities { get; set; }
-    public string Description { get; set; }
+        public int HouseNumber { get; set; }
+        public string Description { get; set; }
     public double AverageRating { get; set; }
         public double Lattitude { get; set; }
         public double Longitude { get; set; }

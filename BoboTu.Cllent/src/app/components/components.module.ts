@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
 import { NewVenueComponent } from './new-venue/new-venue.component';
 import { AddRatingComponent } from './add-rating/add-rating.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { AddRatingComponent } from './add-rating/add-rating.component';
     LoginComponent,
     RegisterComponent,
     NewVenueComponent,
-    AddRatingComponent
+    AddRatingComponent,
+    ShowDetailsComponent
 
   ],
   exports: [

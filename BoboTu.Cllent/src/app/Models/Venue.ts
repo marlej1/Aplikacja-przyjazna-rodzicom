@@ -16,7 +16,7 @@ export class Venue{
       webPage: string 
       houseNumber:number
       emailAddress: string 
-      facilities:Array<FacilityType>
+      facilities:Array<any>
       
        lattitude:number
        longitude:number;

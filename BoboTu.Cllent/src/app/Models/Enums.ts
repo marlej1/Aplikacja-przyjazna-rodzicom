@@ -34,7 +34,7 @@ export class VenueTypeDisplay{
             case 'Restaurant':
                 return'Restauracja';
             case 'ShoppingCenter':
-                return'Gelraria handlowa';
+                return'Galeria handlowa';
                 case 'ThemePark':
                     return'Park rozrywki';    
                     case 'Toilet':
@@ -42,4 +42,33 @@ export class VenueTypeDisplay{
         }
     }
 
+}
+
+export class FacilityToDisplay{
+    static GetDisplayName(venueType: string):string{
+        switch(venueType){
+            case 'ChangingTable':
+                return'Przewijak';
+            case 'PlayArea':
+                return'Kącik zabawaw';
+                case 'Playground':
+                    return'Plac zabaw';
+                    case 'BabyChairs':
+                return'Stoliki dziecieęce';
+                case 'MenuForKids':
+                return'Menu dziecięce';
+
+                case 'ChildCare':
+                return'Opekun/ka dla dzecie';
+        }
+
+        // ChangingTable = 1,
+        // PlayArea,
+        // Playground,
+        // BabyChairs,
+        // MenuForKids,
+        // ChildCare
+
+
+}
 }

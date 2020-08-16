@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { VenuesService } from 'app/Services/venues.service';
 import { Venue } from 'app/Models/Venue';
-import { VenueType } from 'app/Models/Enums';
+import { VenueType, FacilityToDisplay, FacilityType } from 'app/Models/Enums';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
 import { NewVenueComponent } from 'app/components/new-venue/new-venue.component';
 import { AuthService } from 'app/Auth/login/auth.service';
 import { CommunicationService } from 'app/Services/communication.service';
 import { AddRatingComponent } from 'app/components/add-rating/add-rating.component';
+import { VenueForCreation } from 'app/Models/VenueForCreation';
+import { ShowDetailsComponent } from 'app/components/show-details/show-details.component';
 
 
 declare const google: any;
@@ -58,10 +60,6 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.modalService.show(AddRatingComponent);
-
-  
-    
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
               pos=>{
@@ -136,7 +134,7 @@ export class MainPageComponent implements OnInit {
       });  
           marker.setMap(this.map);
 
-          this.addContextMenuAndListersToMarker(marker, false);
+          this.addContextMenuAndListersToMarker(marker, v);
 
 
       })
@@ -146,10 +144,6 @@ export class MainPageComponent implements OnInit {
     },err=>{
        console.log(err);
     })
-
-    let infoWindow = new google.maps.InfoWindow();
-
-    let infoContent ="<div class='info-window'><address>Bethany's Pie Shop<br/>117 Franklin Rd<br/>Brentwood, TN 37027</address></div>"
 
     var marker = new google.maps.Marker({
         position: this.usersLatlng,
@@ -183,33 +177,72 @@ export class MainPageComponent implements OnInit {
 
       this.tempMarker.setMap(this.map);
       marker.IsTempMarker = true;
-      this.addContextMenuAndListersToMarker(this.tempMarker, true);
+      this.addContextMenuAndListersToMarker(this.tempMarker);
     
     }
-    }) 
-
-   
+    })  
 }
-  addContextMenuAndListersToMarker(marker:any, isTempMarker:boolean) {
+  addContextMenuAndListersToMarker(marker:any, venue:Venue =  null) {
 
 
     marker.addListener('rightclick',(e) => {
       let infoWindow = new google.maps.InfoWindow();    
      let addVenueTr ='';
-      if(this.authService.decodedToken && isTempMarker){
-      addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-      <td  id="addNewVenue">Dodaj nowe miejsce</td>
-      </tr>`
-      }
+     let detailsTr ='';
+     let avgRatingAndFaciltiesTr ='';
+     let facilitiesArea = '<div style="margin-bottom:15px;">'
+     let addOpinionTr = '';
 
+
+
+
+      if(this.authService.decodedToken){
+        if(!venue){
+          addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+          <td  id="addNewVenue">Dodaj nowe miejsce</td>
+          </tr>`
+        }else{
+          addOpinionTr =  `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+          <td  id="addRatingFor${venue.id}">Dodaj  opinie o tym miejscu</td>
+          </tr>`
+        }
+          detailsTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+          <td  id="detailsFor${venue.id}">Zobacz szczegóły</td>
+          </tr>`
+          if(venue.facilities){
+            venue.facilities.forEach((f)=>{
+              facilitiesArea += this.GetIconFroFacilityType(f.id)
+
+            })
+          }
+          facilitiesArea += '</div>'
+
+
+          let avgRating = venue.averageRating ===0 ? 'brak' : venue.averageRating;
+          avgRatingAndFaciltiesTr = `<div style="margin-bottom:15px;">
+        <span>  Średnia ocen:${avgRating}</span>
+        <rating  id="rating"  [max]="6" name="rate" [readonly]="true"
+        [titles]="['one','two','three']"></rating>
+          </div>`
+          
+        
+      }    
       infoWindow.setContent(`
+      <h4>${venue.name}</h4>
+      <div style="margin-bottom:15px;">Dostępne udogodnienia</div>
+      ${facilitiesArea}
+      ${avgRatingAndFaciltiesTr}
+
       <table class='context-menu' 
       style='cursor: pointer;
        margin:5px;
        font-weight:normal
-       '>${addVenueTr}
+       '>
+       ${addVenueTr}
+       ${detailsTr}
+       ${addOpinionTr}
       <tr id='getDirectionsForTempMarker' onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-      <td style='padding:4px'>Sprawdź jak dojechać do tego miejsca</td>
+      <td>Sprawdź jak dojechać do tego miejsca</td>
       </tr>
       </table>`);
 
@@ -220,16 +253,36 @@ export class MainPageComponent implements OnInit {
       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
 
 
+        document.getElementById(`detailsFor${venue.id}`).addEventListener('click',()=>{
+          const initialState = {
+            list: [
+              {venue:venue}
+              ]
+            
+          };
+  
+           this.modalService.show(ShowDetailsComponent, {initialState});
+        })
+
+        document.getElementById(`addRatingFor${venue.id}`).addEventListener('click', ()=>{
+         console.log("get opinions", venue.id)
+         const initialState = {
+          list: [
+            {venueId:venue.id, userId: +this.authService.decodedToken.nameid}
+            ]
+          
+        };
+
+         this.modalService.show(AddRatingComponent, {initialState});
+        })
+
        document.getElementById('getDirectionsForTempMarker').addEventListener('click', () => {
-         console.log('getDirections');
-
-
-         this.getDirections(new google.maps.LatLng(marker.getPosition().lat(),
+     this.getDirections(new google.maps.LatLng(marker.getPosition().lat(),
           marker.getPosition().lng()),this.usersLatlng
           )
          });
 
-     if(this.authService.decodedToken && isTempMarker){
+     if(this.authService.decodedToken && !venue){
        let addVenue = document.getElementById(`addNewVenue`);
 
        addVenue.addEventListener('click', () => {
@@ -242,6 +295,26 @@ export class MainPageComponent implements OnInit {
 
     
      })
+  }
+  GetIconFroFacilityType(facilityType: FacilityType):string {
+
+    switch(facilityType){
+      case FacilityType.ChangingTable:
+      return `<img style="margin-right: 10px;height: 20px;" title="Przewijak" src="https://img.icons8.com/officexs/16/000000/nappy.png"/>`;
+      case FacilityType.BabyChairs:
+      return `<img style="margin-right: 10px;height: 20px;" title="Krzesełko dla dzieci" src="https://img.icons8.com/plasticine/100/000000/-chair.png"/>`;
+      case FacilityType.ChildCare:
+      return `<img style="margin-right: 10px;height: 20px;" title="Opiekun/ka dla dzieci" src="https://img.icons8.com/ios-glyphs/30/000000/day-care.png"/>`;
+      case FacilityType.MenuForKids:
+      return `<img style="margin-right: 10px;height: 20px;" title="Menu dla dzieci" src="https://img.icons8.com/dusk/64/000000/restaurant-menu.png"/>`
+
+      case FacilityType.PlayArea:
+        return `<img style="margin-right: 10px;height: 20px;" title="Kącik zabaw" src="https://img.icons8.com/offices/30/000000/border-color.png"/>`
+
+        case FacilityType.Playground:
+        return `<img style="margin-right: 10px;height: 20px;" title="Plac zabaw" src="https://img.icons8.com/officexs/16/000000/playground.png"/>`
+     
+    }  
   }
 
   getUrlcon(venueType:VenueType) {
@@ -332,9 +405,6 @@ export class MainPageComponent implements OnInit {
           alert("Please enter an address.")
         }
 }
-
-
-
 
  drawMarker(mapObject) {
     // Create a new marker since you may need more than one
