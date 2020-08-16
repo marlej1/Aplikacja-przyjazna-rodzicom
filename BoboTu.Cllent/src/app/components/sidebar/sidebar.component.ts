@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from 'app/Services/communication.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -19,8 +20,18 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  opinionMode:boolean = true;
 
-  constructor() { }
+  constructor(private communicationService: CommunicationService) 
+  {
+    this.communicationService.displayOpinions().subscribe(
+      res=>{
+        if(+res != -1){
+          this.opinionMode = true;
+        }
+      }
+    )
+   }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);

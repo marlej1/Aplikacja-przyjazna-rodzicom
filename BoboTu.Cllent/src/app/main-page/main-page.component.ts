@@ -7,6 +7,7 @@ import { LoginComponent } from 'app/Auth/login/login.component';
 import { NewVenueComponent } from 'app/components/new-venue/new-venue.component';
 import { AuthService } from 'app/Auth/login/auth.service';
 import { CommunicationService } from 'app/Services/communication.service';
+import { AddRatingComponent } from 'app/components/add-rating/add-rating.component';
 
 
 declare const google: any;
@@ -37,6 +38,9 @@ export class MainPageComponent implements OnInit {
   
 
   modalRef: BsModalRef;
+  usersLatlng: any;
+  directionsService: any;
+  directionsRenderer: any;
 
 
   constructor(private venuesService: VenuesService, 
@@ -53,6 +57,8 @@ export class MainPageComponent implements OnInit {
      }
 
   ngOnInit() {
+
+    this.modalService.show(AddRatingComponent);
 
   
     
@@ -95,16 +101,15 @@ export class MainPageComponent implements OnInit {
 
   displayMaps(){
 
-    var myLatlng = new google.maps.LatLng(this.latt, this.long);
-    var myLatlng1 = new google.maps.LatLng(this.latt1, this.long1);
+    this.usersLatlng = new google.maps.LatLng(this.latt, this.long);
 
-    let directionsService = new google.maps.DirectionsService();
-    // let directionsRenderer = new google.maps.DirectionsRenderer();
+    
+
     let bounds = new google.maps.LatLngBounds();
 
     var mapOptions = {
         zoom: 13,
-        center: myLatlng
+        center: this.usersLatlng
       
     };
 
@@ -130,6 +135,10 @@ export class MainPageComponent implements OnInit {
           icon:iconUrl
       });  
           marker.setMap(this.map);
+
+          this.addContextMenuAndListersToMarker(marker, false);
+
+
       })
 
 
@@ -143,7 +152,7 @@ export class MainPageComponent implements OnInit {
     let infoContent ="<div class='info-window'><address>Bethany's Pie Shop<br/>117 Franklin Rd<br/>Brentwood, TN 37027</address></div>"
 
     var marker = new google.maps.Marker({
-        position: myLatlng,
+        position: this.usersLatlng,
         title: "Tu jesteś",
    icon :"https://img.icons8.com/bubbles/50/000000/walking.png"
     });
@@ -152,18 +161,17 @@ export class MainPageComponent implements OnInit {
 
 
     this.map.addListener('click', e => {
+      if(this.directionsRenderer){
+        this.directionsRenderer.setMap(null);
+        this.directionsRenderer = null;
+        if(!this.tempMarker){
+          return;
+        }
 
-console.log('click');
-console.log(e.pixel.x, 'x');
-console.log(e.pixel.y, 'y');
+      }
 
-
-
-
-    
     if(this.tempMarker){
       this.tempMarker.setMap(null);
-
       this.tempMarker = null
     }else{
 
@@ -174,53 +182,67 @@ console.log(e.pixel.y, 'y');
     });
 
       this.tempMarker.setMap(this.map);
-      this.tempMarker.addListener('rightclick',(e) => {
-       let infoWindow = new google.maps.InfoWindow();
-
-
-       
-      let addVenueTr ='';
-       if(this.authService.decodedToken){
-       addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-       <td  id="addNewVenue">Dodaj nowe miejsce</td>
-       </tr>`
-       }
- 
-       infoWindow.setContent(`
-       <table class='context-menu' 
-       style='cursor: pointer;
-        margin:5px;
-        font-weight:normal
-        '>${addVenueTr}
-       <tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-       <td style='padding:4px'>Sprawdź jak dojechać do tego miejsca</td>
-       </tr>
-       </table>`);
-
-
-       // Open the window
-       infoWindow.open(this.map, this.tempMarker);
-
-       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
-
-      if(this.authService.decodedToken){
-        let addVenue = document.getElementById(`addNewVenue`);
-
-        addVenue.addEventListener('click', () => {
-        this.openAddNewVenueModal( this.tempMarker.getPosition().lat(), this.tempMarker.getPosition().lng());
-        });
-
-      }
+      marker.IsTempMarker = true;
+      this.addContextMenuAndListersToMarker(this.tempMarker, true);
     
-      });
-
-     
-      })
     }
     }) 
 
    
 }
+  addContextMenuAndListersToMarker(marker:any, isTempMarker:boolean) {
+
+
+    marker.addListener('rightclick',(e) => {
+      let infoWindow = new google.maps.InfoWindow();    
+     let addVenueTr ='';
+      if(this.authService.decodedToken && isTempMarker){
+      addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+      <td  id="addNewVenue">Dodaj nowe miejsce</td>
+      </tr>`
+      }
+
+      infoWindow.setContent(`
+      <table class='context-menu' 
+      style='cursor: pointer;
+       margin:5px;
+       font-weight:normal
+       '>${addVenueTr}
+      <tr id='getDirectionsForTempMarker' onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+      <td style='padding:4px'>Sprawdź jak dojechać do tego miejsca</td>
+      </tr>
+      </table>`);
+
+
+      // Open the window
+      infoWindow.open(this.map, marker);
+
+      google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
+
+
+       document.getElementById('getDirectionsForTempMarker').addEventListener('click', () => {
+         console.log('getDirections');
+
+
+         this.getDirections(new google.maps.LatLng(marker.getPosition().lat(),
+          marker.getPosition().lng()),this.usersLatlng
+          )
+         });
+
+     if(this.authService.decodedToken && isTempMarker){
+       let addVenue = document.getElementById(`addNewVenue`);
+
+       addVenue.addEventListener('click', () => {
+       this.openAddNewVenueModal( marker.getPosition().lat(), marker.getPosition().lng());
+       });
+
+     }
+   
+     });
+
+    
+     })
+  }
 
   getUrlcon(venueType:VenueType) {
 
@@ -338,6 +360,32 @@ console.log(e.pixel.y, 'y');
     this.modalService.show(NewVenueComponent, {initialState});
   }
 
+   getDirections(from, to) {
+     this.directionsService = new google.maps.DirectionsService();
+     this.directionsRenderer = new google.maps.DirectionsRenderer();
+
+    // Set route of how to travel from point A to B
+    this.directionsService.route(
+      {
+        origin: from,
+        destination: to,
+        travelMode: 'DRIVING'
+      },
+       (response, status)=> {
+        if (status === 'OK') {
+          this.directionsRenderer.setDirections(response);
+          // Render directions on the map
+          this.directionsRenderer.setMap(this.map);
+
+         
+
+        } else {
+          alert('Directions request failed due to ' + status);
+        }
+      });
+  }
 }
+
+
 
 
