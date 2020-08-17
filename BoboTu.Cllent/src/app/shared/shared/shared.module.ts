@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {MatSelectModule} from '@angular/material/select';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 
 
@@ -12,12 +13,14 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     CommonModule,
     ModalModule.forRoot(),
     MatSelectModule,
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
+    ProgressbarModule.forRoot()
   ],
   exports:[
     ModalModule,
     MatSelectModule,
-    RatingModule
+    RatingModule,
+    ProgressbarModule
   ]
 })
 export class SharedModule { }

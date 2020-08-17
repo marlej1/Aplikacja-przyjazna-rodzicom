@@ -19,8 +19,20 @@ namespace BoboTu.Web.AutomapperProfiles
               }).ForMember(
                 v => v.AverageRating, opt =>
                 {
-                    opt.MapFrom(s => s.Ratings.Count() == 0 ? 0d : s.Ratings.Select(r => r.Value).Average());
+                    opt.MapFrom(s => s.Ratings.Count() == 0 ? 0d : Math.Round(s.Ratings.Select(r => r.Value).Average(), 2));
+                })
+              .ForMember(
+                v => v.CountOfValueRatings, opt =>
+                {
+                    opt.MapFrom(s => s.Ratings.Select(r => r.Value).GroupBy(rat => rat).Select(r => new CountOfValueRating() { Count = r.Count(), RatingValue = r.Key }));
+                })
+              .ForMember(
+                v => v.RatingsCount, opt =>
+                {
+                    opt.MapFrom(s => s.Ratings.Select(r => r.Value).Count());
                 });
+
+
 
             CreateMap<VenueForCreationDto, Venue>().ReverseMap();
             CreateMap<VenueForUpdate, Venue>().ReverseMap();

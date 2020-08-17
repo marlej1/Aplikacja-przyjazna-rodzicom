@@ -1,11 +1,35 @@
 <div class="card">
     <div class="card-header">
         <h4 class="card-title">{{venue.name}}</h4>
-        <p class="card-category">Adres: {{venue.city}}, {{venue.street}} {{venue.houseNumber}} </p>
+        <p class="card-category">{{venue.description}} </p>
     </div>
     <div class="card-body">
+
+        <div class="contact-details">
+        <div>Adres:  {{venue.city}}, {{venue.street}} {{venue.houseNumber}}</div>
         <div>Adres email: {{venue.emailAddress}}</div>
         <div>Strona www: {{venue.webPage}}</div>
+    </div>
+
+
+        <div *ngIf="venue.ratingsCount > 0">
+                <span>Oceny: </span>
+        <div *ngFor="let valueRating of valueRatings" class="progress-bar-warapper row">
+                <div class="col-3 star-column">
+            <div >{{valueRating.ratingValue}} <span style="color:gold">&#9733;</span> </div> 
+        </div>
+     
+        <div class="col-6 wrapper-column">
+            <progressbar title="{{valueRating.count}}" type="warning" [value]=" valueRating.count/venue.ratingsCount *100"></progressbar>        
+        </div>
+        <div class="col-1 count-column">
+            <span> {{valueRating.count}}</span>
+        </div  >
+
+          </div>
+        </div>
+        <button mat-raised-button class="btn btn-primary" (click)="getComments()">Pokaż opinie</button>
+
 
     </div>
 </div>

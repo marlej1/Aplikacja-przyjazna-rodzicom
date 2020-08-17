@@ -46,7 +46,10 @@ namespace BoboTu.Web.Controllers
             }
             try
             {
-                return Ok(_mapper.Map<VenueDto>(venueFromRepo));
+                var result = _mapper.Map<VenueDto>(venueFromRepo);
+
+              var grouping =  venueFromRepo.Ratings.Select(r => r.Value).GroupBy(rat => rat).Select(r=>   (r.Key, r.Count())  );
+                return Ok(result);
 
             }
             catch (Exception ex)

@@ -17,9 +17,15 @@ export class Venue{
       houseNumber:number
       emailAddress: string 
       facilities:Array<any>
-      
+      countOfValueRatings:Array<CountOfValueRating>
        lattitude:number
        longitude:number;
+       ratingsCount:number;
      
+}
+
+export class CountOfValueRating{
+     ratingValue:number
+     count:number;
 }
 

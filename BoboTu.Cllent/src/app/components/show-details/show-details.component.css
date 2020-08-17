@@ -1,0 +1,17 @@
+progressbar{
+    height: 7px;
+    
+}
+.progress-bar-warapper{
+    width: 70%;
+}
+.wrapper-column{
+    margin: auto 0px;
+    margin-right: -25px;
+ }
+ .star-column{
+    margin-right: -45px
+ }
+ .contact-details{
+     margin-bottom: 10px;
+ }

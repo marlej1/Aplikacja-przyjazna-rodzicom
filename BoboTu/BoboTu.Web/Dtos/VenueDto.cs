@@ -26,5 +26,13 @@ namespace BoboTu.Web.Dtos
 
         public string WebPage { get; set; }
     public string EmailAddress { get; set; }
-}
+        public List<CountOfValueRating> CountOfValueRatings { get; set; }
+        public int RatingsCount { get; set; }
+    }
+
+     public class CountOfValueRating
+    {
+        public int Count { get; set; }
+        public int RatingValue { get; set; }
+    }
 }
