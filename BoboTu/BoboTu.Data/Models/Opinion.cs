@@ -15,6 +15,7 @@ namespace BoboTu.Data.Models
         [ForeignKey("Venue")]
         public int VenueId { get; set; }
         public Venue Venue { get; set; }
+        public string UserName { get; set; }
 
     }
 }

@@ -190,25 +190,31 @@ export class MainPageComponent implements OnInit {
      let addVenueTr ='';
      let detailsTr ='';
      let avgRatingAndFaciltiesTr ='';
-     let facilitiesArea = '<div style="margin-bottom:15px;">'
+     let facilitiesArea = ''
      let addOpinionTr = '';
 
 
+if(venue){
+  detailsTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
+  <td  id="detailsFor${venue.id}">Zobacz szczegóły</td>
+  </tr>`
 
+}
 
-      if(this.authService.decodedToken){
+      if(this.authService.loggedIn()){
         if(!venue){
           addVenueTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
           <td  id="addNewVenue">Dodaj nowe miejsce</td>
           </tr>`
         }else{
           addOpinionTr =  `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-          <td  id="addRatingFor${venue.id}">Dodaj  opinie o tym miejscu</td>
+          <td  id="addRatingFor${venue.id}">Dodaj opinię o tym miejscu</td>
           </tr>`
-        }
-          detailsTr = `<tr onMouseOver="this.style.textShadow='0px 0px 1px black'" onMouseOut="this.style.textShadow='none'">
-          <td  id="detailsFor${venue.id}">Zobacz szczegóły</td>
-          </tr>`
+
+           facilitiesArea = '<div style="margin-bottom:15px;">Dostępne udogodnienia</div><div style="margin-bottom:15px;">'
+
+
+        
           if(venue.facilities){
             venue.facilities.forEach((f)=>{
               facilitiesArea += this.GetIconFroFacilityType(f.id)
@@ -224,12 +230,20 @@ export class MainPageComponent implements OnInit {
         <rating  id="rating"  [max]="6" name="rate" [readonly]="true"
         [titles]="['one','two','three']"></rating>
           </div>`
-          
+
+
+        }
+      }
         
-      }    
+      let venueName = '';    
+      if(venue){
+        venueName = venue.name;
+      }  
+          
       infoWindow.setContent(`
-      <h4>${venue.name}</h4>
-      <div style="margin-bottom:15px;">Dostępne udogodnienia</div>
+      
+      <h4>${venueName}</h4>
+      
       ${facilitiesArea}
       ${avgRatingAndFaciltiesTr}
 
@@ -252,45 +266,49 @@ export class MainPageComponent implements OnInit {
 
       google.maps.event.addListenerOnce(infoWindow, 'domready', () => {
 
-
-        document.getElementById(`detailsFor${venue.id}`).addEventListener('click',()=>{
-          const initialState = {
-            list: [
-              {venue:venue}
-              ]
-            
-          };
-  
-           this.modalService.show(ShowDetailsComponent, {initialState});
-        })
-
-        document.getElementById(`addRatingFor${venue.id}`).addEventListener('click', ()=>{
-         console.log("get opinions", venue.id)
-         const initialState = {
-          list: [
-            {venueId:venue.id, userId: +this.authService.decodedToken.nameid}
-            ]
-          
-        };
-
-         this.modalService.show(AddRatingComponent, {initialState});
-        })
-
        document.getElementById('getDirectionsForTempMarker').addEventListener('click', () => {
      this.getDirections(new google.maps.LatLng(marker.getPosition().lat(),
           marker.getPosition().lng()),this.usersLatlng
           )
          });
 
-     if(this.authService.decodedToken && !venue){
-       let addVenue = document.getElementById(`addNewVenue`);
+     if(this.authService.loggedIn()){
+
+if(!venue){
+  let addVenue = document.getElementById(`addNewVenue`);
 
        addVenue.addEventListener('click', () => {
        this.openAddNewVenueModal( marker.getPosition().lat(), marker.getPosition().lng());
        });
 
+}else{
+  document.getElementById(`addRatingFor${venue.id}`).addEventListener('click', ()=>{
+    console.log("get opinions", venue.id)
+    const initialState = {
+     list: [
+       {venueId:venue.id, userId: +this.authService.decodedToken.nameid,userName:this.authService.decodedToken.unique_name }
+       ]
+     
+   };
+
+    this.modalService.show(AddRatingComponent, {initialState});
+   })
+
+}
+     }  
+
+     if(venue){
+      document.getElementById(`detailsFor${venue.id}`).addEventListener('click',()=>{
+        const initialState = {
+          list: [
+            {venue:venue}
+            ]
+          
+        };
+
+         this.modalService.show(ShowDetailsComponent, {initialState});
+      })
      }
-   
      });
 
     

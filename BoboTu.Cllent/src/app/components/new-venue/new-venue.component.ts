@@ -69,7 +69,7 @@ export class NewVenueComponent implements OnInit {
        this.addNewVenueForm.reset();
       const initialState = {
         list: [
-          {venueId:res.id, userId: +this.authService.decodedToken.nameid}
+          {venueId:res.id, userId: +this.authService.decodedToken.nameid, userName:this.authService.decodedToken.unique_name}
           ]
         
       };

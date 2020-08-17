@@ -10,6 +10,8 @@ namespace BoboTu.Web.Dtos
         public int Id { get; set; }
         public string Contents { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public int VenueId { get; set; }
+        public int UsersRating { get; set; }
     }
 }

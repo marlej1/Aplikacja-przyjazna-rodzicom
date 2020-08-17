@@ -35,7 +35,10 @@ export class AddRatingComponent implements OnInit {
     this.addNewRatingAndOpinionForm.value
 
     
-    this.venuesService.PartiallyUpdateVenue(this.addNewRatingAndOpinionForm.value, this.list[0].userId as number, this.list[0].venueId as number).subscribe(
+    this.venuesService.PartiallyUpdateVenue(this.addNewRatingAndOpinionForm.value, 
+      this.list[0].userId as number,
+      this.list[0].userName as string,
+       this.list[0].venueId as number).subscribe(
       res=>{
         if(res){
           alert('Dziękujemy za dodanie opinii!');

@@ -29,6 +29,25 @@
           </div>
         </div>
         <button mat-raised-button class="btn btn-primary" (click)="getComments()">Pokaż opinie</button>
+        
+
+        <div>
+        <div *ngFor="let opinion of opinions" class="row">
+            <div class="col-12">
+                <div class="card">
+                 
+                    <div class="card-body">
+                        <h5 *ngIf="opinion.usersRating > 0"> Użytkownik {{opinion.userName}} ocenił na {{opinion.usersRating}} <span style="color:gold">&#9733;</span></h5>
+                        <h5 *ngIf="opinion.usersRating === 0"> Użytkownik {{opinion.userName}} brak oceny <span style="color:gold">&#9733;</span></h5>
+
+                        <div><b>Komentarz:</b> </div>
+                        {{opinion.contents}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     </div>

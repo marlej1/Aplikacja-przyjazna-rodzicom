@@ -63,6 +63,17 @@ namespace BoboTu.Data.Repositories
             return await _boboTuDb.Facilities.FirstOrDefaultAsync(f => f.Id == facilityId);
         }
 
+        public async Task<IEnumerable<Opinion>> GetOpinionsForVenue(int venueId)
+        {
+            return await _boboTuDb.Opinions.Where(o => o.VenueId == venueId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Rating>> GetRatingsForVenue(int venueId)
+        {
+            return await _boboTuDb.Ratings.Where(o => o.VenueId == venueId).ToListAsync();
+
+        }
+
         public async Task<Venue> GetVenueAsync(int id)
         {
 

@@ -14,6 +14,9 @@ namespace BoboTu.Data.Repositories
         Task<Venue> GetVenueAsync(int id);
         Task<bool> SaveChanges();
         Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds = null);
+        Task<IEnumerable<Opinion>> GetOpinionsForVenue(int venueId);
+
         Task<Facility> GetFacility(int facilityId);
+        Task<IEnumerable<Rating>> GetRatingsForVenue(int venueId);
     }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Venue, CountOfValueRating } from 'app/Models/Venue';
+import { VenuesService } from 'app/Services/venues.service';
+import { Opinion } from 'app/Models/Opinion';
 
 @Component({
   selector: 'app-show-details',
@@ -8,11 +10,13 @@ import { Venue, CountOfValueRating } from 'app/Models/Venue';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
+  showOpinions: boolean;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef, private venuesService:VenuesService) { }
   list:any[] = []
   venue:Venue;
   valueRatings:any[] = [];
+  opinions:Opinion[] = []
 
   
 
@@ -39,6 +43,12 @@ export class ShowDetailsComponent implements OnInit {
   }
   getComments(){
     console.log('getCommenta');
+    this.showOpinions = true;
+    this.venuesService.getOpinionsForVenue(this.venue.id).subscribe(res=>{
+      console.log(res);
+      this.opinions = res;
+    })
+
   }
 
 }
