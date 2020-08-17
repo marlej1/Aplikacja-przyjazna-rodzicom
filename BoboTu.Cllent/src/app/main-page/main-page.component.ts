@@ -35,6 +35,8 @@ export class MainPageComponent implements OnInit {
 
     latt1:number = 51.0340335;
     long1:number = 20.967026;
+
+    filter  = {venueTypeIds: '', facilityIds :''};
     addrMarker:any;
   venues: Venue[];
   tempMarker: any = null;
@@ -56,6 +58,10 @@ export class MainPageComponent implements OnInit {
       this.communicationService.refreshPage().subscribe
       (
         res =>{
+          if(typeof res === 'object'){
+            this.filter.facilityIds = res.facilityIds;
+            this.filter.venueTypeIds = res.venueTypeIds;
+          }
           this.displayMaps();
         }
       );
@@ -130,7 +136,7 @@ export class MainPageComponent implements OnInit {
     })
     
 
-    this.venuesService.getVenues().subscribe(venues=>{    
+    this.venuesService.getVenues(this.filter).subscribe(venues=>{    
       this.venues = venues;
       this.venues.forEach(v=>{
     var Latlng = new google.maps.LatLng(v.lattitude, v.longitude);

@@ -18,6 +18,10 @@ export class CommunicationService {
       this.subject.next("refresh page");
   }
 
+  filterVenuesAndRefresMainhPage(filter:any) {
+    this.subject.next(filter);
+}
+
   clearMessages() {
       this.subject.next();
   }

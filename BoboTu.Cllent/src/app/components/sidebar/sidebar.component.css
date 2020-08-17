@@ -1,0 +1,23 @@
+.form-check-label{
+    color: black;
+}
+
+.btn-toggle{
+    color: black;
+    border:none;
+    background: rgba(25, 25, 25, 0);
+}
+
+.btn-toggle:hover{
+    color: black;
+    background: rgba(25, 25, 25, 0);
+
+}
+
+.filterWrapper{
+    margin-left: 10px;
+}
+
+#collapseFacilityTypes {
+    margin: 25px 0px;
+}

@@ -8,7 +8,7 @@
 </div>
 <div class="sidebar-wrapper">
  
-<div>
+<!-- <div>
     <ul class="nav">
         <div *ngIf="isMobileMenu()">
             <form class="navbar-form">
@@ -53,21 +53,47 @@
     
         </ul>
       </div>
-    </div>
+    </div> -->
 
 
 
+<div class="filterWrapper">  
+    <div id="collapseFacilityTypes">
+
+<a href="#" class="btn-toggle" (click)="isCollapsed = !isCollapsed">Udogodnienia &#9660;</a>
     
+<hr>
+<div  *ngFor="let facility of facilityArray" [collapse]="isCollapsed" [isAnimated]="true">
+    <div  class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" [(ngModel)]="facility.isSelected" type="checkbox" value="">
+            {{facility.nameForDisplay}}
+            <span class="form-check-sign">
+                <span class="check"></span>
+            </span>
+        </label>
+      </div>
+</div>
+</div>
 
-        <ul>
-            <li>jakies opinie</li>
-            <li>jakies opinie</li>
-            <li>jakies opinie</li>
-            <li>jakies opinie</li>
+<a href="#" class="btn-toggle" (click)="VenueTypesisCollapsed = !VenueTypesisCollapsed">Typ lokalizacji &#9660;</a>
+    
+<hr>
+<div id="collapseVenueTypes" >
+<div  *ngFor="let venueType of venuTypesArray" [collapse]="VenueTypesisCollapsed" [isAnimated]="true">
+    <div  class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" [(ngModel)]="venueType.isSelected" type="checkbox" value="">
+            {{venueType.nameForDisplay}}
+            <span class="form-check-sign">
+                <span class="check"></span>
+            </span>
+        </label>
+      </div>
+</div>
+</div>
 
-            
-        </ul>
-
+<button mat-raised-button class="btn btn-warning" (click)="filterVenues()">Zastosuj filtry</button>
 
 
 

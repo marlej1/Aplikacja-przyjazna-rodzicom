@@ -29,9 +29,14 @@ namespace BoboTu.Web.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<VenueDto>>> GetVenues()
+        public async Task<ActionResult<IEnumerable<VenueDto>>> GetVenues(string facilityIds, string venueTypeIds)
         {
-            var venuesFromRepo = await _venueRepository.GetAllVenuesAsync();
+
+            int[] facilityIdArray = facilityIds == null ? new int[0] : facilityIds.Split(',').Select(id => int.Parse(id)).ToArray();
+
+            int[] venueTypeIdsArray = venueTypeIds == null ? new int[0] : venueTypeIds.Split(',').Select(id => int.Parse(id)).ToArray();
+
+            var venuesFromRepo = await _venueRepository.GetAllVenuesAsync(facilityIdArray, venueTypeIdsArray);
             return Ok(_mapper.Map<IEnumerable<VenueDto>>(venuesFromRepo));
         }
 

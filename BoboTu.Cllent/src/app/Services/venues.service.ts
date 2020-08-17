@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { Venue } from 'app/Models/Venue';
@@ -18,8 +18,12 @@ export class VenuesService {
 
   constructor(private http:HttpClient) { }
 
-getVenues():Observable<Venue[]>{
-     return this.http.get<Venue[]>(this.baseUrl)
+getVenues(filter:any):Observable<Venue[]>{
+  let params = new HttpParams()
+  .append('facilityIds', filter.facilityIds)
+  .append('venueTypeIds', filter.venueTypeIds)
+
+     return this.http.get<Venue[]>(this.baseUrl, {params: params})
 }
 
 getOpinionsForVenue(venueId: number):Observable<Opinion[]>{

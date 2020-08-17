@@ -26,9 +26,23 @@ namespace BoboTu.Data.Repositories
             _boboTuDb.Remove(venue);
         }
 
-        public async Task<Venue[]> GetAllVenuesAsync()
+        public async Task<Venue[]> GetAllVenuesAsync( int[] facilityIds, int[] venueTypeIds)
         {
-           return await  _boboTuDb.Venues.Include(v => v.Ratings).Include(v => v.Opinions).Include(v => v.VenueFacilities).ThenInclude(vf=>vf.Facility).ToArrayAsync();
+            var collection = _boboTuDb.Venues.Include(v => v.Ratings).Include(v => v.Opinions).Include(v => v.VenueFacilities).ThenInclude(vf => vf.Facility) as IQueryable<Venue>;
+            if (venueTypeIds.Any())
+            {
+                collection = collection.Where(v => venueTypeIds.Contains((int)v.VenueType));
+            }
+
+            if (facilityIds.Any())
+            {
+
+                
+                var result = collection.AsEnumerable().Where(v => !facilityIds.Except(v.VenueFacilities.Select(f => f.FacilityId)).Any());
+
+                return await Task.FromResult(result.ToArray());
+            }
+            return await collection.ToArrayAsync();
 
         }
 

@@ -10,7 +10,7 @@ namespace BoboTu.Data.Repositories
     {
         void AddVenue(Venue Venue);
         void DeleteVenue(Venue Venue);
-        Task<Venue[]> GetAllVenuesAsync();
+        Task<Venue[]> GetAllVenuesAsync(int[] venueTypeIds, int[] facilityIds);
         Task<Venue> GetVenueAsync(int id);
         Task<bool> SaveChanges();
         Task<IEnumerable<Facility>> GetFacilities(int[] facilitiesIds = null);

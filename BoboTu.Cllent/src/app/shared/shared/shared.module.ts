@@ -4,7 +4,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {MatSelectModule} from '@angular/material/select';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
-
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 @NgModule({
@@ -14,13 +14,15 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     ModalModule.forRoot(),
     MatSelectModule,
     RatingModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   exports:[
     ModalModule,
     MatSelectModule,
     RatingModule,
-    ProgressbarModule
+    ProgressbarModule,
+    CollapseModule
   ]
 })
 export class SharedModule { }
