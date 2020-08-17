@@ -10,6 +10,7 @@ import { CommunicationService } from 'app/Services/communication.service';
 import { AddRatingComponent } from 'app/components/add-rating/add-rating.component';
 import { VenueForCreation } from 'app/Models/VenueForCreation';
 import { ShowDetailsComponent } from 'app/components/show-details/show-details.component';
+import { ThrowStmt } from '@angular/compiler';
 
 
 declare const google: any;
@@ -44,6 +45,7 @@ export class MainPageComponent implements OnInit {
   directionsService: any;
   directionsRenderer: any;
   geoCodedAddress: any = {}
+  geoCodedAddressSet: boolean;
 
 
   constructor(private venuesService: VenuesService, 
@@ -167,10 +169,16 @@ export class MainPageComponent implements OnInit {
       if(this.directionsRenderer){
         this.directionsRenderer.setMap(null);
         this.directionsRenderer = null;
+
         if(!this.tempMarker){
           return;
         }
 
+      }
+
+      if(this.geoCodedAddressSet){
+        this.geoCodedAddress = {};
+        this.geoCodedAddressSet = false;
       }
 
     if(this.tempMarker){
@@ -385,11 +393,12 @@ if(!venue){
                     console.log(results[0]);
 
 
-                    if(results[0].geometry.location_type=== 'ROOFTOP' ){
+                    if(results[0].geometry.location_type=== 'ROOFTOP' || results[0].geometry.location_type=== 'RANGE_INTERPOLATED' ){
                       this.geoCodedAddress.houseNumber =  results[0].address_components[0];
                       this.geoCodedAddress.street =  results[0].address_components[1];
                       this.geoCodedAddress.city =  results[0].address_components[3];
                       this.geoCodedAddress.zipCode =  results[0].address_components[7];
+                      this.geoCodedAddressSet = true;
                     }else{
                   alert("Nie udało się dodać znacznika. Podaj dokładny adres:(Miescowość, ulica oraz numer budynku)");
                        return;
@@ -479,7 +488,7 @@ if(!venue){
   openAddNewVenueModal(lat:number, lng:number){
     const initialState = {
       list: [
-        {lat:lat, lng:lng}
+        {lat:lat, lng:lng, geoCodedAddress: this.geoCodedAddressSet ? this.geoCodedAddress : null}
       ]
     };
     this.modalService.show(NewVenueComponent, {initialState});

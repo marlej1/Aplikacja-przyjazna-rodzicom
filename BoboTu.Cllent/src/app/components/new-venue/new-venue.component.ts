@@ -34,7 +34,6 @@ export class NewVenueComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.list[0], 'passed data');
 
-
     let  index:number = 1;
     for (let item in VenueType) {
       if (isNaN(Number(item))) {
@@ -44,7 +43,7 @@ export class NewVenueComponent implements OnInit {
 
       }
   }
-
+ 
  
     this.addNewVenueForm = this.builder.group({
       name: ['', Validators.required],
@@ -52,9 +51,9 @@ export class NewVenueComponent implements OnInit {
       webPage: [''],
       emailAddress:[''],
       facilitiesIds:[],
-      houseNumber:[],
-      street:[''],
-      city:[''],
+      houseNumber:[ this.list[0].geoCodedAddress ? this.list[0].geoCodedAddress.houseNumber.long_name : ''],
+      street:[this.list[0].geoCodedAddress ? this.list[0].geoCodedAddress.street.long_name : ''],
+      city:[this.list[0].geoCodedAddress ? this.list[0].geoCodedAddress.city.long_name : ''],
       lattitude:[this.list[0].lat],
       longitude:[this.list[0].lng],
       venueType:[1]
@@ -66,10 +65,12 @@ export class NewVenueComponent implements OnInit {
      res=>{
        
        this.bsModalRef.hide();
-       this.addNewVenueForm.reset();
+       this.modalService.hide(0);
       const initialState = {
         list: [
-          {venueId:res.id, userId: +this.authService.decodedToken.nameid, userName:this.authService.decodedToken.unique_name}
+          {venueId:res.id,
+             userId: +this.authService.decodedToken.nameid,
+              userName:this.authService.decodedToken.unique_name}
           ]
         
       };
