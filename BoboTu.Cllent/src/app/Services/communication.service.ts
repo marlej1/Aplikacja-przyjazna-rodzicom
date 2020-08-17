@@ -10,6 +10,8 @@ export class CommunicationService {
 
   private subject = new Subject<any>();
   private displayOpinionssubject = new Subject<number>();
+  private geoCoderSubject = new Subject<string>();
+
 
 
   initiateMainPageRefresh() {
@@ -33,6 +35,14 @@ initiateDisplayMenuOptions() {
 }
 displayOpinions(): Observable<any> {
   return this.displayOpinionssubject.asObservable();
+}
+
+sendAddressForNewMarker(address:string){
+  this.geoCoderSubject.next(address);
+}
+
+addMarker(){
+  return this.geoCoderSubject.asObservable();
 }
 
 }

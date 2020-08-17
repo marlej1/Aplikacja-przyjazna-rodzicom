@@ -43,6 +43,7 @@ export class MainPageComponent implements OnInit {
   usersLatlng: any;
   directionsService: any;
   directionsRenderer: any;
+  geoCodedAddress: any = {}
 
 
   constructor(private venuesService: VenuesService, 
@@ -56,6 +57,13 @@ export class MainPageComponent implements OnInit {
           this.displayMaps();
         }
       );
+
+      this.communicationService.addMarker().subscribe(
+        adrress=>{
+
+          this.setMarkerOnAddress(adrress);
+        }
+      )
      }
 
   ngOnInit() {
@@ -152,6 +160,7 @@ export class MainPageComponent implements OnInit {
     });
 
     marker.setMap(this.map);
+    
 
 
     this.map.addListener('click', e => {
@@ -364,36 +373,64 @@ if(!venue){
 
         if (address.length > 0) {
           geocoder.geocode({ 'address': address },  (results, status) => {
+        
+
+
             switch (status) {
               case google.maps.GeocoderStatus.OK:
                 if (results[0]) {
-                  let mapObject = {
-                    "lat": results[0].geometry.location.lat(),
-                    "lng": results[0].geometry.location.lng(),
-                    "marker": null,
-                    "title": address,
-                    "infoContent": null,
-                    "infoIcon": null
-                  }
+
+                 console.log("lat", results[0].geometry.location.lat())
+                 console.log("lng", results[0].geometry.location.lng())
+                    console.log(results[0]);
+
+
+                    if(results[0].geometry.location_type=== 'ROOFTOP' ){
+                      this.geoCodedAddress.houseNumber =  results[0].address_components[0];
+                      this.geoCodedAddress.street =  results[0].address_components[1];
+                      this.geoCodedAddress.city =  results[0].address_components[3];
+                      this.geoCodedAddress.zipCode =  results[0].address_components[7];
+                    }else{
+                  alert("Nie udało się dodać znacznika. Podaj dokładny adres:(Miescowość, ulica oraz numer budynku)");
+                       return;
+
+                    }
+                
+       
+                  console.log(this.geoCodedAddress)
+                
                   // Remove any previous address marker
-                  if (this.addrMarker) {
-                    this.addrMarker.setMap(null);
+                  if (this.tempMarker) {
+                    this.tempMarker.setMap(null);
                   }
 
+                  this.tempMarker   = new google.maps.Marker({
+                    position: new google.maps.LatLng(results[0].geometry.location.lat(),
+                     results[0].geometry.location.lng()),
+               icon :"https://img.icons8.com/doodle/48/000000/marker--v1.png",
+               
+                });
+
+                this.tempMarker.setMap(this.map);
+                this.map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(),
+                results[0].geometry.location.lng())); 
+                this.map.setZoom(16)
+
+
                   // Set marker on map
-                  this.addrMarker = this.drawMarker(mapObject);
+                   this.addContextMenuAndListersToMarker(this.tempMarker);
 
                   // Get existing map boundaries
                   let bounds = this.map.getBounds();
 
                   // Extend boundaries to encompass new marker
-                  bounds.extend(this.addrMarker.position);
+                  bounds.extend(this.tempMarker.position);
 
                   // Make sure rectangle is displayed on the map
                   this.map.fitBounds(bounds);                  
                 }
                 else {
-                  alert("Could not locate address.");
+                  alert("Nie można znaleźć adresu");
                 }
                 break;
 
@@ -472,6 +509,8 @@ if(!venue){
         }
       });
   }
+
+
 }
 
 

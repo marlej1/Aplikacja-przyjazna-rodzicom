@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LoginComponent } from 'app/Auth/login/login.component';
 import { RegisterComponent } from 'app/Auth/login/register/register.component';
 import { AuthService } from 'app/Auth/login/auth.service';
+import { CommunicationService } from 'app/Services/communication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,11 +21,13 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     modalRef: BsModalRef;
     UserName:string;
+    address: string;
 
     constructor(location: Location,  private element: ElementRef,
          private router: Router,
          private modalService: BsModalService,
-         public authService:AuthService
+         public authService:AuthService,
+         private communicationService: CommunicationService
          ) {
       this.location = location;
           this.sidebarVisible = false;
@@ -159,5 +162,9 @@ export class NavbarComponent implements OnInit {
       openRegisterModal(){
         this.modalRef = this.modalService.show(RegisterComponent);
 
+      }
+
+      sendAddress(){
+          this.communicationService.sendAddressForNewMarker(this.address);
       }
 }
