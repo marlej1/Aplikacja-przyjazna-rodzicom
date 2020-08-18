@@ -65,7 +65,6 @@ export class NewVenueComponent implements OnInit {
      res=>{
        
        this.bsModalRef.hide();
-       this.modalService.hide(0);
       const initialState = {
         list: [
           {venueId:res.id,

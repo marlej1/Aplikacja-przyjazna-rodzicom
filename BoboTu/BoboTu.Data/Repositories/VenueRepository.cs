@@ -1,4 +1,5 @@
 ﻿using BoboTu.Data.Models;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,13 +35,23 @@ namespace BoboTu.Data.Repositories
                 collection = collection.Where(v => venueTypeIds.Contains((int)v.VenueType));
             }
 
+
+
             if (facilityIds.Any())
             {
+                var venuePredicate = PredicateBuilder.New<Venue>();
 
-                
-                var result = collection.AsEnumerable().Where(v => !facilityIds.Except(v.VenueFacilities.Select(f => f.FacilityId)).Any());
+                foreach (var id in facilityIds)
+                {
+                    venuePredicate = venuePredicate.And(m => m.VenueFacilities
+                                       .Any(vf => vf.FacilityId == id
+                                              ));
+                }
 
-                return await Task.FromResult(result.ToArray());
+                //    var result = collection.AsEnumerable().Where(v => !facilityIds.Except(v.VenueFacilities.Select(f => f.FacilityId)).Any());
+                collection = collection.Where(venuePredicate);
+
+                //return await Task.FromResult(result.ToArray());
             }
             return await collection.ToArrayAsync();
 

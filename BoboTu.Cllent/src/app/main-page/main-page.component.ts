@@ -59,6 +59,7 @@ export class MainPageComponent implements OnInit {
       (
         res =>{
           if(typeof res === 'object'){
+            console.log(res);
             this.filter.facilityIds = res.facilityIds;
             this.filter.venueTypeIds = res.venueTypeIds;
           }

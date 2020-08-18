@@ -16,6 +16,7 @@ export class AddRatingComponent implements OnInit {
   constructor(private builder:FormBuilder,
     public bsModalRef: BsModalRef,
     private venuesService: VenuesService,
+    private modalService: BsModalService, 
     private communicationService: CommunicationService)
      { }
     modalRef: BsModalRef;
@@ -41,6 +42,8 @@ export class AddRatingComponent implements OnInit {
        this.list[0].venueId as number).subscribe(
       res=>{
         if(res){
+    this.bsModalRef.hide();
+
           alert('Dziękujemy za dodanie opinii!');
           
         }
@@ -49,11 +52,13 @@ export class AddRatingComponent implements OnInit {
 
       },
       ()=>{
+    this.bsModalRef.hide();
+
         this.communicationService.initiateMainPageRefresh();
       }
     );
 
-    this.bsModalRef.hide();
+    
     this.addNewRatingAndOpinionForm.reset();
     
   
