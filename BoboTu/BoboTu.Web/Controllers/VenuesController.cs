@@ -41,7 +41,7 @@ namespace BoboTu.Web.Controllers
         }
 
         [HttpGet("{venueId}", Name = "GetVenue")]
-        public async Task<ActionResult<VenueDto>> GetVenue(int venueId)
+        public async Task<IActionResult> GetVenue(int venueId)
         {
             var venueFromRepo = await _venueRepository.GetVenueAsync(venueId);
 
