@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BoboTu.Data;
 using BoboTu.Data.Models;
-using DatingApp.API.Data;
+using BoboTu.Web.DataSeed;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -31,7 +27,9 @@ namespace BoboTu.Web
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
                      context.Database.Migrate();
-                    Seed.SeedUsers(userManager, roleManager);
+                    Seed.SeedFacilities(context);
+                    
+
                 }
                 catch (Exception ex)
                 {

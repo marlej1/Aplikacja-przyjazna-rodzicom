@@ -20,6 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
 using System;
 using Newtonsoft.Json.Serialization;
+using BoboTu.Web.DataSeed;
 
 namespace BoboTu.Web
 {
@@ -81,6 +82,8 @@ namespace BoboTu.Web
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IVenueRepository, VenueRepository>();
+            services.AddTransient<Seed>();
+
             services.AddDbContext<BoboTuDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BoboTuConnection")));
 
 
