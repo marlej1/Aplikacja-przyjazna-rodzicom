@@ -103,7 +103,7 @@ namespace BoboTu.Web.Controllers
         [HttpPatch("{venueId}")]
         public async Task<ActionResult> UpdateVenue(int venueId,  JsonPatchDocument<VenueForUpdate> patchDocument)
         {
-
+           
             var venueFromRepo = await _venueRepository.GetVenueAsync(venueId);
 
             if (venueFromRepo == null)

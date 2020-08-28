@@ -1,0 +1,2141 @@
+﻿[
+  {
+    "id": 1,
+    "name": "In Vito",
+    "city": "Kraków",
+    "street": "Św, Krzyża",
+    "zipCode": null,
+    "venueType": 1,
+    "ratings": [
+      {
+        "id": 4,
+        "value": 3,
+        "userId": 1,
+        "venueId": 1
+      },
+      {
+        "id": 5,
+        "value": 5,
+        "userId": 1,
+        "venueId": 1
+      },
+      {
+        "id": 15,
+        "value": 3,
+        "userId": 1,
+        "venueId": 1
+      }
+    ],
+    "opinions": [
+      {
+        "id": 4,
+        "contents": "Całkiem niezła knajpa",
+        "userId": 1,
+        "userName": null,
+        "venueId": 1,
+        "usersRating": 0
+      },
+      {
+        "id": 5,
+        "contents": "Całkiem niezła knajpa 456",
+        "userId": 1,
+        "userName": null,
+        "venueId": 1,
+        "usersRating": 0
+      },
+      {
+        "id": 15,
+        "contents": "three",
+        "userId": 1,
+        "userName": null,
+        "venueId": 1,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [],
+    "houseNumber": 45,
+    "description": "Włoska restauracja",
+    "averageRating": 3.67,
+    "lattitude": 50.063095,
+    "longitude": 19.943132,
+    "webPage": "www.invito.pl",
+    "emailAddress": null,
+    "countOfValueRatings": [
+      {
+        "count": 2,
+        "ratingValue": 3
+      },
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 3
+  },
+  {
+    "id": 2,
+    "name": "Vege Burger",
+    "city": "Kraków",
+    "street": "Starowiślna",
+    "zipCode": null,
+    "venueType": 2,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [],
+    "houseNumber": 132,
+    "description": "Włoska restauracja",
+    "averageRating": 0.0,
+    "lattitude": 50.050415,
+    "longitude": 19.951737,
+    "webPage": "www.begeburger.pl",
+    "emailAddress": null,
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 3,
+    "name": "Vege Burger",
+    "city": "Kraków",
+    "street": "Starowiślna",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [
+      {
+        "id": 1,
+        "value": 2,
+        "userId": 2,
+        "venueId": 3
+      }
+    ],
+    "opinions": [
+      {
+        "id": 1,
+        "contents": "Przeciętnie! NIeprzyjaźnie dla dzieci!!",
+        "userId": 1,
+        "userName": null,
+        "venueId": 3,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 1,
+        "name": "Przewijak"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 132,
+    "description": "Włoska restauracja",
+    "averageRating": 2.0,
+    "lattitude": 50.050415,
+    "longitude": 19.951737,
+    "webPage": "www.begeburger.pl",
+    "emailAddress": null,
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 2
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 4,
+    "name": "Vege Burge 2r",
+    "city": "Kraków 2",
+    "street": "Starowiślna",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 2,
+        "value": 2,
+        "userId": 2,
+        "venueId": 4
+      }
+    ],
+    "opinions": [
+      {
+        "id": 2,
+        "contents": "Przeciętnie! NIeprzyjaźnie dla dzieci!!",
+        "userId": 1,
+        "userName": null,
+        "venueId": 4,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 1,
+        "name": "Przewijak"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 132,
+    "description": "Włoska restauracja",
+    "averageRating": 2.0,
+    "lattitude": 50.075415,
+    "longitude": 19.961737,
+    "webPage": "www.begeburger.pl",
+    "emailAddress": null,
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 2
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 5,
+    "name": "Vege Burge 3r",
+    "city": "Kraków 2",
+    "street": "Starowiślna",
+    "zipCode": null,
+    "venueType": 5,
+    "ratings": [
+      {
+        "id": 3,
+        "value": 2,
+        "userId": 2,
+        "venueId": 5
+      }
+    ],
+    "opinions": [
+      {
+        "id": 3,
+        "contents": "Przeciętnie! NIeprzyjaźnie dla dzieci!!",
+        "userId": 1,
+        "userName": null,
+        "venueId": 5,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 1,
+        "name": "Przewijak"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 132,
+    "description": "Włoska restauracja",
+    "averageRating": 2.0,
+    "lattitude": 50.080415,
+    "longitude": 19.957737,
+    "webPage": "www.begeburger.pl",
+    "emailAddress": null,
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 2
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 6,
+    "name": "Faith Blevins",
+    "city": "Voluptatum anim mole",
+    "street": "Sapiente et eligendi",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [
+      {
+        "id": 6,
+        "value": 5,
+        "userId": 1,
+        "venueId": 6
+      }
+    ],
+    "opinions": [
+      {
+        "id": 6,
+        "contents": "Całkiem niezła knajpa 456",
+        "userId": 1,
+        "userName": null,
+        "venueId": 6,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 979,
+    "description": "Eaque dolor occaecat",
+    "averageRating": 5.0,
+    "lattitude": 50.04668019520399,
+    "longitude": 19.929382784814468,
+    "webPage": "Eligendi tempora exc",
+    "emailAddress": "jocerezub@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 7,
+    "name": "Melodie Beck",
+    "city": "Aut sint officiis qu",
+    "street": "Pariatur Aliquip ea",
+    "zipCode": null,
+    "venueType": 8,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 904,
+    "description": "Amet eveniet asper",
+    "averageRating": 0.0,
+    "lattitude": 50.060898356426065,
+    "longitude": 20.010578616113296,
+    "webPage": "Hic dolor delectus ",
+    "emailAddress": "rojugiz@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 8,
+    "name": "Harrison Green",
+    "city": "Voluptatem recusanda",
+    "street": "Aut et at aliquid ad",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [
+      {
+        "id": 16,
+        "value": 4,
+        "userId": 1,
+        "venueId": 8
+      },
+      {
+        "id": 17,
+        "value": 4,
+        "userId": 1,
+        "venueId": 8
+      }
+    ],
+    "opinions": [
+      {
+        "id": 16,
+        "contents": "ttttt",
+        "userId": 1,
+        "userName": null,
+        "venueId": 8,
+        "usersRating": 0
+      },
+      {
+        "id": 17,
+        "contents": "opnia loli",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 8,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 697,
+    "description": "Et et molestiae sed ",
+    "averageRating": 4.0,
+    "lattitude": 50.06629360958258,
+    "longitude": 19.97816581575771,
+    "webPage": "Aliquip illum in to",
+    "emailAddress": "mewi@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 2,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 2
+  },
+  {
+    "id": 9,
+    "name": "Amena Cruz",
+    "city": "Aut enim qui ut sint",
+    "street": "Nobis distinctio Qu",
+    "zipCode": null,
+    "venueType": 5,
+    "ratings": [
+      {
+        "id": 12,
+        "value": 4,
+        "userId": 1,
+        "venueId": 9
+      }
+    ],
+    "opinions": [
+      {
+        "id": 12,
+        "contents": "opinion for 9",
+        "userId": 1,
+        "userName": null,
+        "venueId": 9,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 443,
+    "description": "Consectetur sit at ",
+    "averageRating": 4.0,
+    "lattitude": 50.032548896872925,
+    "longitude": 19.93224284047853,
+    "webPage": "Aute non a doloribus",
+    "emailAddress": "viloka@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 10,
+    "name": "Dean Nash",
+    "city": "Et veniam omnis ali",
+    "street": "Veritatis laboriosam",
+    "zipCode": null,
+    "venueType": 2,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 201,
+    "description": "Officia dolore asper",
+    "averageRating": 0.0,
+    "lattitude": 50.03020831442294,
+    "longitude": 19.979164584130874,
+    "webPage": "Asperiores a fugiat ",
+    "emailAddress": "qasuwi@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 11,
+    "name": "Patience Chang",
+    "city": "Vero doloremque aut ",
+    "street": "Doloremque temporibu",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 162,
+    "description": "Tenetur autem cum qu",
+    "averageRating": 0.0,
+    "lattitude": 50.07319032605429,
+    "longitude": 20.123569504572075,
+    "webPage": "Velit placeat ut mo",
+    "emailAddress": "lufytina@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 12,
+    "name": "Dalton Hicks",
+    "city": "Necessitatibus aut s",
+    "street": "Error qui quod ducim",
+    "zipCode": null,
+    "venueType": 5,
+    "ratings": [
+      {
+        "id": 14,
+        "value": 6,
+        "userId": 1,
+        "venueId": 12
+      }
+    ],
+    "opinions": [
+      {
+        "id": 14,
+        "contents": "123",
+        "userId": 1,
+        "userName": null,
+        "venueId": 12,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 228,
+    "description": "Consectetur eiusmod ",
+    "averageRating": 6.0,
+    "lattitude": 50.04720931718152,
+    "longitude": 20.019848330468765,
+    "webPage": "Pariatur Quia ab od",
+    "emailAddress": "tatynep@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 6
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 13,
+    "name": "Nita Kinney",
+    "city": "Molestiae dignissimo",
+    "street": "Qui proident saepe ",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 728,
+    "description": "Quas nesciunt quasi",
+    "averageRating": 0.0,
+    "lattitude": 50.05263249627789,
+    "longitude": 19.98929260537111,
+    "webPage": "Aut culpa tempor fug",
+    "emailAddress": "xexijiby@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 14,
+    "name": "Cassandra Walker",
+    "city": "Et nihil sit animi",
+    "street": "Et repudiandae aliqu",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [
+      {
+        "id": 11,
+        "value": 5,
+        "userId": 1,
+        "venueId": 14
+      }
+    ],
+    "opinions": [
+      {
+        "id": 11,
+        "contents": "cdsd",
+        "userId": 1,
+        "userName": null,
+        "venueId": 14,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 399,
+    "description": "Voluptatem laborum e",
+    "averageRating": 5.0,
+    "lattitude": 50.02250568946937,
+    "longitude": 20.01317641040038,
+    "webPage": "Dolorem velit conse",
+    "emailAddress": "riquzuxygy@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 15,
+    "name": "Zeph Rosales",
+    "city": "Necessitatibus sunt",
+    "street": "Voluptate sit ut hic",
+    "zipCode": null,
+    "venueType": 8,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 467,
+    "description": "Quibusdam dolores id",
+    "averageRating": 0.0,
+    "lattitude": 50.064988306100645,
+    "longitude": 20.094876938822544,
+    "webPage": "Voluptatibus quisqua",
+    "emailAddress": "zatopequp@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 16,
+    "name": "Ray Blackburn",
+    "city": "Doloremque incididun",
+    "street": "Magnam sit quas mini",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      }
+    ],
+    "houseNumber": 294,
+    "description": "Minima ipsa enim mi",
+    "averageRating": 0.0,
+    "lattitude": 50.04205373257585,
+    "longitude": 20.097506746484378,
+    "webPage": "Saepe enim voluptate",
+    "emailAddress": "xuqyhyf@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 17,
+    "name": "Rhea Rutledge",
+    "city": "Sit eu praesentium ",
+    "street": "Repudiandae dolorum ",
+    "zipCode": null,
+    "venueType": 8,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      }
+    ],
+    "houseNumber": 873,
+    "description": "Esse ab dolore qui ",
+    "averageRating": 0.0,
+    "lattitude": 50.05509472860537,
+    "longitude": 20.127528596694535,
+    "webPage": "Et consectetur et no",
+    "emailAddress": "devizywyru@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 18,
+    "name": "Bert Valencia",
+    "city": "Eius aliqua Aut qui",
+    "street": "Qui non ut aliquam d",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      }
+    ],
+    "houseNumber": 493,
+    "description": "Quod reprehenderit e",
+    "averageRating": 0.0,
+    "lattitude": 50.02622431596686,
+    "longitude": 20.055167360880922,
+    "webPage": "Ut quidem dolorum ma",
+    "emailAddress": "zywufar@mailinator.net",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 19,
+    "name": "Brett Mathews",
+    "city": "Delectus facilis et",
+    "street": "In dicta minima labo",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 216,
+    "description": "Impedit aliquip pro",
+    "averageRating": 0.0,
+    "lattitude": 50.032501927142334,
+    "longitude": 19.878571017236343,
+    "webPage": "Rerum esse adipisici",
+    "emailAddress": "biqe@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 20,
+    "name": "Tashya Patton",
+    "city": "Reprehenderit amet ",
+    "street": "Nam eu laborum et fu",
+    "zipCode": null,
+    "venueType": 2,
+    "ratings": [
+      {
+        "id": 7,
+        "value": 5,
+        "userId": 1,
+        "venueId": 20
+      }
+    ],
+    "opinions": [
+      {
+        "id": 7,
+        "contents": "dcsc",
+        "userId": 1,
+        "userName": null,
+        "venueId": 20,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 305,
+    "description": "Mollit in excepteur ",
+    "averageRating": 5.0,
+    "lattitude": 50.031178702597984,
+    "longitude": 19.894020541162124,
+    "webPage": "Saepe saepe voluptat",
+    "emailAddress": "nuta@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 21,
+    "name": "Omar Steele",
+    "city": "Kraków",
+    "street": "Kalwaryjska",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [
+      {
+        "id": 13,
+        "value": 5,
+        "userId": 1,
+        "venueId": 21
+      }
+    ],
+    "opinions": [
+      {
+        "id": 13,
+        "contents": "niezłe miejsce",
+        "userId": 1,
+        "userName": null,
+        "venueId": 21,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 269,
+    "description": "Et aliqua Est dolo",
+    "averageRating": 5.0,
+    "lattitude": 50.044916408665294,
+    "longitude": 19.995953064701414,
+    "webPage": "Itaque libero commod",
+    "emailAddress": "pokyw@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 22,
+    "name": "Fuller Gonzales",
+    "city": "Laborum Irure labor",
+    "street": "In aut anim autem Na",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 604,
+    "description": "Minus tempore quis ",
+    "averageRating": 0.0,
+    "lattitude": 50.01028897987779,
+    "longitude": 19.974667053959227,
+    "webPage": "Excepturi debitis es",
+    "emailAddress": "pewyfusupo@mailinator.net",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 23,
+    "name": "Teegan Reilly",
+    "city": "Et accusantium nihil",
+    "street": "Laborum Sit ea in i",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [
+      {
+        "id": 8,
+        "value": 6,
+        "userId": 1,
+        "venueId": 23
+      }
+    ],
+    "opinions": [
+      {
+        "id": 8,
+        "contents": "Boisko jest super",
+        "userId": 1,
+        "userName": null,
+        "venueId": 23,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 444,
+    "description": "Rerum perferendis in",
+    "averageRating": 6.0,
+    "lattitude": 50.06034734338516,
+    "longitude": 19.964401705712906,
+    "webPage": "Qui debitis adipisci",
+    "emailAddress": "mogylyka@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 6
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 24,
+    "name": "strusia",
+    "city": "Ut do et quia quis q",
+    "street": "Ullamco sunt asperi",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 9,
+        "value": 2,
+        "userId": 1,
+        "venueId": 24
+      }
+    ],
+    "opinions": [
+      {
+        "id": 9,
+        "contents": "strsuai",
+        "userId": 1,
+        "userName": null,
+        "venueId": 24,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 629,
+    "description": "Et est veniam prov",
+    "averageRating": 2.0,
+    "lattitude": 50.088263172600016,
+    "longitude": 20.009279251098633,
+    "webPage": "Facere ex adipisicin",
+    "emailAddress": "kowe@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 2
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 25,
+    "name": "Ciara Wiley",
+    "city": "Blanditiis accusamus",
+    "street": "Molestiae et volupta",
+    "zipCode": null,
+    "venueType": 8,
+    "ratings": [
+      {
+        "id": 10,
+        "value": 5,
+        "userId": 1,
+        "venueId": 25
+      }
+    ],
+    "opinions": [
+      {
+        "id": 10,
+        "contents": "fdvvfd",
+        "userId": 1,
+        "userName": null,
+        "venueId": 25,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 897,
+    "description": "Non dolor consequatu",
+    "averageRating": 5.0,
+    "lattitude": 50.055167511445575,
+    "longitude": 20.043537600488296,
+    "webPage": "Et rem sit dolorem a",
+    "emailAddress": "loqepemid@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 26,
+    "name": "Domek",
+    "city": "Kraków",
+    "street": "Jakuba Bojki",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [
+      {
+        "id": 18,
+        "value": 5,
+        "userId": 1,
+        "venueId": 26
+      }
+    ],
+    "opinions": [
+      {
+        "id": 18,
+        "contents": "super domek",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 26,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 1,
+        "name": "Przewijak"
+      },
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 3,
+    "description": "",
+    "averageRating": 5.0,
+    "lattitude": 50.0069898,
+    "longitude": 19.964195,
+    "webPage": "Domek.com",
+    "emailAddress": "",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 27,
+    "name": "Erasmus Mcbride",
+    "city": "Qui perspiciatis ma",
+    "street": "Qui id ad id sint o",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 19,
+        "value": 5,
+        "userId": 1,
+        "venueId": 27
+      }
+    ],
+    "opinions": [
+      {
+        "id": 19,
+        "contents": "yu",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 27,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      }
+    ],
+    "houseNumber": 614,
+    "description": "Consequatur cillum ",
+    "averageRating": 5.0,
+    "lattitude": 50.01686294156492,
+    "longitude": 19.981613323833486,
+    "webPage": "Deserunt saepe error",
+    "emailAddress": "gacezerer@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 28,
+    "name": "Alika Love",
+    "city": "Ipsa molestiae veli",
+    "street": "Qui ab dolor maiores",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [
+      {
+        "id": 20,
+        "value": 4,
+        "userId": 1,
+        "venueId": 28
+      }
+    ],
+    "opinions": [
+      {
+        "id": 20,
+        "contents": "",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 28,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 92,
+    "description": "Sint commodi volupt",
+    "averageRating": 4.0,
+    "lattitude": 50.0692744,
+    "longitude": 20.044705,
+    "webPage": "Autem illo sunt nemo",
+    "emailAddress": "jacuh@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 29,
+    "name": "qwert",
+    "city": "Kraków",
+    "street": "Prądnicka",
+    "zipCode": null,
+    "venueType": 1,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 3,
+    "description": "",
+    "averageRating": 0.0,
+    "lattitude": 50.0813382,
+    "longitude": 19.9376145,
+    "webPage": "",
+    "emailAddress": "",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 30,
+    "name": "qwr",
+    "city": "Kraków",
+    "street": "Opolska",
+    "zipCode": null,
+    "venueType": 1,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 3,
+    "description": "",
+    "averageRating": 0.0,
+    "lattitude": 50.09126699999999,
+    "longitude": 19.930269,
+    "webPage": "weqe",
+    "emailAddress": "",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 31,
+    "name": "hhbhhb",
+    "city": "Kraków",
+    "street": "Wrocławska",
+    "zipCode": null,
+    "venueType": 1,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 1,
+        "name": "Przewijak"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 3,
+    "description": "",
+    "averageRating": 0.0,
+    "lattitude": 50.0751453,
+    "longitude": 19.9339202,
+    "webPage": "bbj",
+    "emailAddress": "bjb",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 32,
+    "name": "Cheryl Fischer",
+    "city": "Soluta sequi soluta ",
+    "street": "Quam officia in aliq",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [
+      {
+        "id": 21,
+        "value": 4,
+        "userId": 1,
+        "venueId": 32
+      }
+    ],
+    "opinions": [
+      {
+        "id": 21,
+        "contents": "chgchccgh",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 32,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      }
+    ],
+    "houseNumber": 418,
+    "description": "Neque consectetur ne",
+    "averageRating": 4.0,
+    "lattitude": 50.073601748085956,
+    "longitude": 19.890899886877023,
+    "webPage": "Laboriosam illum a",
+    "emailAddress": "masymewufe@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 33,
+    "name": "Regina Mcdowell",
+    "city": "Vero et omnis volupt",
+    "street": "Rerum totam dolores ",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 22,
+        "value": 4,
+        "userId": 1,
+        "venueId": 33
+      }
+    ],
+    "opinions": [
+      {
+        "id": 22,
+        "contents": "regina jest ok",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 33,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      }
+    ],
+    "houseNumber": 746,
+    "description": "Dolorem necessitatib",
+    "averageRating": 4.0,
+    "lattitude": 50.104077056411796,
+    "longitude": 19.938981353662456,
+    "webPage": "Ut sit velit volup",
+    "emailAddress": "tajyp@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 34,
+    "name": "Amelia Mcdaniel",
+    "city": "Eligendi explicabo ",
+    "street": "Labore esse temporib",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 23,
+        "value": 3,
+        "userId": 1,
+        "venueId": 34
+      }
+    ],
+    "opinions": [
+      {
+        "id": 23,
+        "contents": "g",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 34,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 236,
+    "description": "Rerum vero qui offic",
+    "averageRating": 3.0,
+    "lattitude": 50.09587750387253,
+    "longitude": 19.85610512141024,
+    "webPage": "Ad eum dignissimos a",
+    "emailAddress": "ditilofu@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 3
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 35,
+    "name": "Evan Cervantes",
+    "city": "Incidunt possimus ",
+    "street": "Voluptatem aut conse",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [
+      {
+        "id": 24,
+        "value": 4,
+        "userId": 1,
+        "venueId": 35
+      }
+    ],
+    "opinions": [
+      {
+        "id": 24,
+        "contents": "qweewq",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 35,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 407,
+    "description": "Duis quis voluptas m",
+    "averageRating": 4.0,
+    "lattitude": 50.090688880615964,
+    "longitude": 19.888903506755327,
+    "webPage": "Necessitatibus volup",
+    "emailAddress": "dikilejis@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 36,
+    "name": "hjhbj",
+    "city": "jhbj",
+    "street": "jhb",
+    "zipCode": null,
+    "venueType": 1,
+    "ratings": [
+      {
+        "id": 25,
+        "value": 3,
+        "userId": 1,
+        "venueId": 36
+      }
+    ],
+    "opinions": [
+      {
+        "id": 25,
+        "contents": "",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 36,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 5,
+    "description": "",
+    "averageRating": 3.0,
+    "lattitude": 50.1201011378028,
+    "longitude": 19.88213466233136,
+    "webPage": "jb",
+    "emailAddress": "bjhbh",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 3
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 37,
+    "name": "Logan Holland",
+    "city": "Sed dolorem porro qu",
+    "street": "Temporibus odit obca",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 954,
+    "description": "Voluptate nihil volu",
+    "averageRating": 0.0,
+    "lattitude": 50.11144759144598,
+    "longitude": 20.03773537477848,
+    "webPage": "Pariatur Ad minima ",
+    "emailAddress": "retil@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 38,
+    "name": "Stewart Sears",
+    "city": "Expedita commodo atq",
+    "street": "Aut rerum officiis q",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 612,
+    "description": "Architecto consequat",
+    "averageRating": 0.0,
+    "lattitude": 50.081366716846084,
+    "longitude": 19.738983590981555,
+    "webPage": "Porro aut accusamus ",
+    "emailAddress": "dihap@mailinator.net",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 39,
+    "name": "Stephen Massey",
+    "city": "Ea quasi natus dolor",
+    "street": "Ut sed assumenda nes",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [
+      {
+        "id": 26,
+        "value": 5,
+        "userId": 1,
+        "venueId": 39
+      },
+      {
+        "id": 34,
+        "value": 4,
+        "userId": 1,
+        "venueId": 39
+      }
+    ],
+    "opinions": [
+      {
+        "id": 26,
+        "contents": "",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 39,
+        "usersRating": 0
+      },
+      {
+        "id": 34,
+        "contents": "3443",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 39,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 174,
+    "description": "Earum accusantium op",
+    "averageRating": 4.5,
+    "lattitude": 50.15474451253475,
+    "longitude": 19.906748697840637,
+    "webPage": "Ut vel assumenda ips",
+    "emailAddress": "viqojuqega@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 5
+      },
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 2
+  },
+  {
+    "id": 40,
+    "name": "Gwendolyn Knowles",
+    "city": "Et molestiae eiusmod",
+    "street": "Laboris consectetur ",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [
+      {
+        "id": 27,
+        "value": 4,
+        "userId": 1,
+        "venueId": 40
+      }
+    ],
+    "opinions": [
+      {
+        "id": 27,
+        "contents": "ddsc",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 40,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 342,
+    "description": "Eiusmod expedita sol",
+    "averageRating": 4.0,
+    "lattitude": 50.109624905198565,
+    "longitude": 19.78987679486078,
+    "webPage": "Voluptatum impedit ",
+    "emailAddress": "mycoxedul@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 41,
+    "name": "Mara Hooper",
+    "city": "Dolore irure enim in",
+    "street": "Et cum qui ea velit ",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [
+      {
+        "id": 28,
+        "value": 3,
+        "userId": 1,
+        "venueId": 41
+      }
+    ],
+    "opinions": [
+      {
+        "id": 28,
+        "contents": "sa",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 41,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 483,
+    "description": "Officia doloribus iu",
+    "averageRating": 3.0,
+    "lattitude": 50.13172021200503,
+    "longitude": 19.948877333628573,
+    "webPage": "Aliquid nulla qui iu",
+    "emailAddress": "qikuqasyc@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 3
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 42,
+    "name": "Jamalia Hughes",
+    "city": "Provident et aperia",
+    "street": "Aut minim iure dolor",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 29,
+        "value": 4,
+        "userId": 1,
+        "venueId": 42
+      }
+    ],
+    "opinions": [
+      {
+        "id": 29,
+        "contents": "qweq",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 42,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 181,
+    "description": "Veniam cillum conse",
+    "averageRating": 4.0,
+    "lattitude": 50.0678102504407,
+    "longitude": 19.9033602291504,
+    "webPage": "Aut ea minus quis du",
+    "emailAddress": "gihanydozu@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 43,
+    "name": "Brynne Murray",
+    "city": "Autem in adipisicing",
+    "street": "Nemo obcaecati qui e",
+    "zipCode": null,
+    "venueType": 7,
+    "ratings": [],
+    "opinions": [],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 772,
+    "description": "Quas corporis minus ",
+    "averageRating": 0.0,
+    "lattitude": 50.08128516344953,
+    "longitude": 19.828628079302927,
+    "webPage": "Ut expedita nulla qu",
+    "emailAddress": "wawogigisu@mailinator.com",
+    "countOfValueRatings": [],
+    "ratingsCount": 0
+  },
+  {
+    "id": 44,
+    "name": "Scott Mathis",
+    "city": "Sit consequuntur qu",
+    "street": "Eum et ut nisi sequi",
+    "zipCode": null,
+    "venueType": 8,
+    "ratings": [
+      {
+        "id": 30,
+        "value": 4,
+        "userId": 1,
+        "venueId": 44
+      }
+    ],
+    "opinions": [
+      {
+        "id": 30,
+        "contents": "tyccy",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 44,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 2,
+        "name": "Kącik zabaw"
+      },
+      {
+        "id": 5,
+        "name": "Menu dla dzieci"
+      },
+      {
+        "id": 6,
+        "name": "Opiekun dla dzieci"
+      }
+    ],
+    "houseNumber": 358,
+    "description": "Sed quia ipsum sit",
+    "averageRating": 4.0,
+    "lattitude": 50.06072894105585,
+    "longitude": 19.85917876505864,
+    "webPage": "Est fugiat libero no",
+    "emailAddress": "jivite@mailinator.net",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 45,
+    "name": "Ira Patterson",
+    "city": "Corrupti ullam dolo",
+    "street": "Rem perspiciatis as",
+    "zipCode": null,
+    "venueType": 3,
+    "ratings": [
+      {
+        "id": 31,
+        "value": 4,
+        "userId": 1,
+        "venueId": 45
+      }
+    ],
+    "opinions": [
+      {
+        "id": 31,
+        "contents": "gg",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 45,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 608,
+    "description": "Cumque ducimus temp",
+    "averageRating": 4.0,
+    "lattitude": 50.07089828796638,
+    "longitude": 19.839233069319636,
+    "webPage": "In ut ullamco nihil ",
+    "emailAddress": "zisabawa@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 46,
+    "name": "Shelley Fernandez",
+    "city": "Vitae neque nisi cul",
+    "street": "Expedita qui qui con",
+    "zipCode": null,
+    "venueType": 4,
+    "ratings": [
+      {
+        "id": 32,
+        "value": 4,
+        "userId": 1,
+        "venueId": 46
+      }
+    ],
+    "opinions": [
+      {
+        "id": 32,
+        "contents": "werw",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 46,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      },
+      {
+        "id": 4,
+        "name": "Krzesełka dla dzieci"
+      }
+    ],
+    "houseNumber": 722,
+    "description": "Consequat Atque opt",
+    "averageRating": 4.0,
+    "lattitude": 50.060795688615485,
+    "longitude": 19.823121341821718,
+    "webPage": "Et illo exercitation",
+    "emailAddress": "qyqykisy@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 4
+      }
+    ],
+    "ratingsCount": 1
+  },
+  {
+    "id": 47,
+    "name": "Paula Hoffman",
+    "city": "Magnam consectetur n",
+    "street": "Esse fuga Soluta c",
+    "zipCode": null,
+    "venueType": 6,
+    "ratings": [
+      {
+        "id": 33,
+        "value": 1,
+        "userId": 1,
+        "venueId": 47
+      }
+    ],
+    "opinions": [
+      {
+        "id": 33,
+        "contents": "",
+        "userId": 1,
+        "userName": "Lola",
+        "venueId": 47,
+        "usersRating": 0
+      }
+    ],
+    "facilities": [
+      {
+        "id": 3,
+        "name": "Plac zabaw"
+      }
+    ],
+    "houseNumber": 328,
+    "description": "Aut et expedita ut i",
+    "averageRating": 1.0,
+    "lattitude": 50.083126712084095,
+    "longitude": 19.866236142899925,
+    "webPage": "Hic consequatur vel",
+    "emailAddress": "cenoco@mailinator.com",
+    "countOfValueRatings": [
+      {
+        "count": 1,
+        "ratingValue": 1
+      }
+    ],
+    "ratingsCount": 1
+  }
+]

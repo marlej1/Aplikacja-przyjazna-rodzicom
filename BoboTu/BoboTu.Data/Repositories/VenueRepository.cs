@@ -19,11 +19,21 @@ namespace BoboTu.Data.Repositories
         }
         public void AddVenue(Venue venue)
         {
-            _boboTuDb.Add(venue);
+
+            if (venue == null)
+            {
+                throw new ArgumentException( nameof(venue));
+            }
+             _boboTuDb.Add(venue);
         }
 
         public void DeleteVenue(Venue venue)
         {
+
+            if (venue == null)
+            {
+                throw new ArgumentException(nameof(venue));
+            }
             _boboTuDb.Remove(venue);
         }
 
