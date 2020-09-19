@@ -14,6 +14,7 @@ declare var $: any;
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  showError:boolean = false;
 
 
   constructor(public bsModalRef: BsModalRef,
@@ -38,9 +39,13 @@ export class LoginComponent implements OnInit {
       this.bsModalRef.hide();
       this.loginForm.reset();
       this.showNotification('top','center', res.userName);
+      this.showError = false;
 
 
     },err=>{
+      this.showError = true;
+
+      console.log(err)
      
 
       

@@ -26,6 +26,7 @@ export class AppComponent {
 
     this.facilitiesService.getFacilities().subscribe(
       res =>{
+        console.log(res);
         this.facilitiesService.faciltiesCached = res;
       }
 

@@ -12,6 +12,8 @@ import { ConfirmPasswordValidator } from 'app/Validators/ConfirmPasswordValidato
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   user: any;
+  showError:boolean = false;;
+  errorMessage:string;
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -44,20 +46,21 @@ register(){
     console.log("regiter success", res)
     this.bsModalRef.hide();
     this.registerForm.reset();
-
-  },err=>{
-    console.log(err);
-    
-  },
-  () => {
-    this.authService.login(this.user).subscribe(() => {
-      
-      
+    this.showError = false;
+    this.authService.login(this.user).subscribe(() => {    
     },err=>{
       console.log(err)
     })
 
-})
+  },err=>{
+    console.log(err);
+    this.showError = true;
+    this.errorMessage = err[0].description;
+    if(!this.errorMessage){
+      this.errorMessage = err;
+    }
+    
+  })
 
 }
 }

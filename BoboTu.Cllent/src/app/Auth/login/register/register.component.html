@@ -6,6 +6,7 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <span *ngIf="showError" class="error-message" >{{errorMessage}}</span>
 
         <div class="row justify-content-center">
             <div class="col-11">

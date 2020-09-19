@@ -54,7 +54,7 @@ export class FacilityToDisplay{
                 case 'Playground':
                     return'Plac zabaw';
                     case 'BabyChairs':
-                return'Stoliki dziecieęce';
+                return'Stoliki dziecięce';
                 case 'MenuForKids':
                 return'Menu dziecięce';
 

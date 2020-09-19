@@ -235,17 +235,7 @@ if(venue){
           <td  id="addRatingFor${venue.id}">Dodaj opinię o tym miejscu</td>
           </tr>`
 
-           facilitiesArea = '<div style="margin-bottom:15px;">Dostępne udogodnienia</div><div style="margin-bottom:15px;">'
-
-
-        
-          if(venue.facilities){
-            venue.facilities.forEach((f)=>{
-              facilitiesArea += this.GetIconFroFacilityType(f.id)
-
-            })
-          }
-          facilitiesArea += '</div>'
+       
 
 
           let avgRating = venue.averageRating ===0 ? 'brak' : venue.averageRating;
@@ -262,6 +252,16 @@ if(venue){
       let venueName = '';    
       if(venue){
         venueName = venue.name;
+
+        facilitiesArea = '<div style="margin-bottom:15px;">Dostępne udogodnienia</div><div style="margin-bottom:15px;">'
+   
+        if(venue.facilities){
+          venue.facilities.forEach((f)=>{
+            facilitiesArea += this.GetIconFroFacilityType(f.id)
+
+          })
+        }
+        facilitiesArea += '</div>'
       }  
           
       infoWindow.setContent(`
