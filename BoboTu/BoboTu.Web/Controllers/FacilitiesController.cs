@@ -7,6 +7,7 @@ using BoboTu.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BoboTu.Web.Controllers
 {
@@ -16,17 +17,30 @@ namespace BoboTu.Web.Controllers
     public class FacilitiesController : ControllerBase
     {
         private readonly IVenueRepository _venueRepository;
+        private readonly ILogger _logger;
 
-        public FacilitiesController(IVenueRepository venueRepository)
+
+        public FacilitiesController(IVenueRepository venueRepository, ILogger<FacilitiesController> logger)
         {
             _venueRepository = venueRepository;
+            _logger = logger;
+
 
         }
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<Facility>>> GetFacilities()
         {
-            
-            return Ok(await _venueRepository.GetFacilities());
+
+            try
+            {
+                return Ok(await _venueRepository.GetFacilities());
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
+            }
         }
     }
 }

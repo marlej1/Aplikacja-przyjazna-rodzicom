@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BoboTu.Web.Controllers
 {
@@ -20,24 +21,41 @@ namespace BoboTu.Web.Controllers
     {
         private readonly IVenueRepository _venueRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
 
-        public VenuesController(IVenueRepository venueRepository, IMapper mapper)
+        public VenuesController(IVenueRepository venueRepository, IMapper mapper, ILogger<VenuesController> logger)
         {
             _venueRepository = venueRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<VenueDto>>> GetVenues(string facilityIds, string venueTypeIds)
         {
 
-            int[] facilityIdArray = facilityIds == null ? new int[0] : facilityIds.Split(',').Select(id => int.Parse(id)).ToArray();
 
-            int[] venueTypeIdsArray = venueTypeIds == null ? new int[0] : venueTypeIds.Split(',').Select(id => int.Parse(id)).ToArray();
 
-            var venuesFromRepo = await _venueRepository.GetAllVenuesAsync(facilityIdArray, venueTypeIdsArray);
-            return Ok(_mapper.Map<IEnumerable<VenueDto>>(venuesFromRepo));
+            try
+            {
+
+                throw new Exception("Bład połaczenia z bazą");
+
+                int[] facilityIdArray = facilityIds == null ? new int[0] : facilityIds.Split(',').Select(id => int.Parse(id)).ToArray();
+
+                int[] venueTypeIdsArray = venueTypeIds == null ? new int[0] : venueTypeIds.Split(',').Select(id => int.Parse(id)).ToArray();
+
+                var venuesFromRepo = await _venueRepository.GetAllVenuesAsync(facilityIdArray, venueTypeIdsArray);
+                return Ok(_mapper.Map<IEnumerable<VenueDto>>(venuesFromRepo));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
+        
+            }
+        
         }
 
         [HttpGet("{venueId}", Name = "GetVenue")]
@@ -59,8 +77,8 @@ namespace BoboTu.Web.Controllers
             }
             catch (Exception ex)
             {
-
-                throw;
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
             }
 
         }

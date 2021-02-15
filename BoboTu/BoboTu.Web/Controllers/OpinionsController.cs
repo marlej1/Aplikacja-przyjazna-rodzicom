@@ -8,6 +8,7 @@ using BoboTu.Web.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BoboTu.Web.Controllers
 {
@@ -18,32 +19,46 @@ namespace BoboTu.Web.Controllers
     {
         private readonly IVenueRepository _venueRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public OpinionsController(IVenueRepository venueRepository, IMapper mapper)
+
+        public OpinionsController(IVenueRepository venueRepository, IMapper mapper, ILogger<OpinionsController> logger)
         {
             _venueRepository = venueRepository;
             _mapper = mapper;
+            _logger = logger;
+
         }
 
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<OpinionDto>>> GetOpinions(int venueId)
         {
-            var opinionsFromRepo = await _venueRepository.GetOpinionsForVenue(venueId);
-            var ratings = await _venueRepository.GetRatingsForVenue(venueId);
 
-            var opinionsAndRatings =    _mapper.Map<IEnumerable<OpinionDto>>(opinionsFromRepo);
-
-            foreach (var opinion in opinionsAndRatings)
+            try
             {
+                var opinionsFromRepo = await _venueRepository.GetOpinionsForVenue(venueId);
+                var ratings = await _venueRepository.GetRatingsForVenue(venueId);
 
-              var rating =   ratings.LastOrDefault(r => r.UserId == opinion.UserId);
-                if(rating != null)
+                var opinionsAndRatings = _mapper.Map<IEnumerable<OpinionDto>>(opinionsFromRepo);
+
+                foreach (var opinion in opinionsAndRatings)
                 {
-                    opinion.UsersRating = rating.Value;
 
+                    var rating = ratings.LastOrDefault(r => r.UserId == opinion.UserId);
+                    if (rating != null)
+                    {
+                        opinion.UsersRating = rating.Value;
+
+                    }
                 }
+                return Ok(opinionsAndRatings);
             }
-            return Ok(opinionsAndRatings);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
+            }
+        
         }
     }
 }
