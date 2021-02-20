@@ -50,7 +50,7 @@ export class FacilityToDisplay{
             case 'ChangingTable':
                 return'Przewijak';
             case 'PlayArea':
-                return'Kącik zabawaw';
+                return'Kącik zabaw';
                 case 'Playground':
                     return'Plac zabaw';
                     case 'BabyChairs':

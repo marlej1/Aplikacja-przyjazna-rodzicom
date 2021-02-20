@@ -22,6 +22,7 @@ using System;
 using Newtonsoft.Json.Serialization;
 using BoboTu.Web.DataSeed;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace BoboTu.Web
 {
@@ -37,6 +38,17 @@ namespace BoboTu.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSwaggerGen(action =>
+            {
+                action.SwaggerDoc("BoboTuSpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title ="LibraryApi",
+                    Version ="1"
+                });
+
+                action.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "BoboTu.Web.xml"));
+            });
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -135,6 +147,13 @@ namespace BoboTu.Web
             app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(action=> 
+            {
+                action.SwaggerEndpoint("/swagger/BoboTuSpecification/swagger.json", "BoboTuApi");
+                action.RoutePrefix = "";
+            } );
 
             app.UseRouting();
 

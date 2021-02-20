@@ -31,6 +31,12 @@ namespace BoboTu.Web.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get All venues
+        /// </summary>
+        /// <param name="facilityIds"></param>
+        /// <param name="venueTypeIds"></param>
+        /// <returns></returns>
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<VenueDto>>> GetVenues(string facilityIds, string venueTypeIds)
         {
@@ -40,7 +46,7 @@ namespace BoboTu.Web.Controllers
             try
             {
 
-                throw new Exception("Bład połaczenia z bazą");
+                throw new Exception("Bład połaczenia z bazą dzisiak");
 
                 int[] facilityIdArray = facilityIds == null ? new int[0] : facilityIds.Split(',').Select(id => int.Parse(id)).ToArray();
 
@@ -57,7 +63,11 @@ namespace BoboTu.Web.Controllers
             }
         
         }
-
+        /// <summary>
+        /// Get venue by id
+        /// </summary>
+        /// <param name="venueId"></param>
+        /// <returns></returns>
         [HttpGet("{venueId}", Name = "GetVenue")]
         public async Task<IActionResult> GetVenue(int venueId)
         {
@@ -83,31 +93,46 @@ namespace BoboTu.Web.Controllers
 
         }
 
+        /// <summary>
+        /// Create new venue
+        /// </summary>
+        /// <param name="venue"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<VenueDto>> CreateVenue(VenueForCreationDto venue)
         {
             var venueEntity = _mapper.Map<Venue>(venue);
 
 
-            if (venue.FacilitiesIds.Any())
-            {
 
-                foreach (var facilityId in venue.FacilitiesIds)
+            try
+            {
+                if (venue.FacilitiesIds.Any())
                 {
 
-                    var facility = await _venueRepository.GetFacility(facilityId);
-
-
-                    facility.VenueFacilities.Add(new VenueFacility()
+                    foreach (var facilityId in venue.FacilitiesIds)
                     {
-                        Facility = facility,
-                        Venue = venueEntity
-                    });
+
+                        var facility = await _venueRepository.GetFacility(facilityId);
+
+
+                        facility.VenueFacilities.Add(new VenueFacility()
+                        {
+                            Facility = facility,
+                            Venue = venueEntity
+                        });
+                    }
+
+
+
                 }
-
-
-
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
+            }
+      
 
             _venueRepository.AddVenue(venueEntity);
             await _venueRepository.SaveChanges();
@@ -117,26 +142,39 @@ namespace BoboTu.Web.Controllers
                 new { venueId = venueToReturn.Id },
                 venueToReturn);
         }
-
+        /// <summary>
+        /// Update venue with specific properties
+        /// </summary>
+        /// <param name="venueId"></param>
+        /// <param name="patchDocument"></param>
+        /// <returns></returns>
         [HttpPatch("{venueId}")]
         public async Task<ActionResult> UpdateVenue(int venueId,  JsonPatchDocument<VenueForUpdate> patchDocument)
         {
-           
-            var venueFromRepo = await _venueRepository.GetVenueAsync(venueId);
-
-            if (venueFromRepo == null)
+            try
             {
-                return NotFound();
+                var venueFromRepo = await _venueRepository.GetVenueAsync(venueId);
+
+                if (venueFromRepo == null)
+                {
+                    return NotFound();
+                }
+
+                var venueToUpdate = _mapper.Map<VenueForUpdate>(venueFromRepo);
+
+                patchDocument.ApplyTo(venueToUpdate);
+
+                _mapper.Map(venueToUpdate, venueFromRepo);
+                await _venueRepository.SaveChanges();
+
+                return NoContent();
             }
-
-            var venueToUpdate = _mapper.Map<VenueForUpdate>(venueFromRepo);
-
-            patchDocument.ApplyTo(venueToUpdate);
-
-            _mapper.Map(venueToUpdate, venueFromRepo);
-            await _venueRepository.SaveChanges();
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Wystąpił nieznany błąd");
+            }
+          
 
         }
 

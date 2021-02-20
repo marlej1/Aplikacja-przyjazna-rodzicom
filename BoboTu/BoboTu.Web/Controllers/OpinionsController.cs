@@ -29,7 +29,11 @@ namespace BoboTu.Web.Controllers
             _logger = logger;
 
         }
-
+        /// <summary>
+        /// Get all opinions
+        /// </summary>
+        /// <param name="venueId"></param>
+        /// <returns></returns>
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<OpinionDto>>> GetOpinions(int venueId)
         {

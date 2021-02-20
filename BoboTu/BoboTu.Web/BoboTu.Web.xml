@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BoboTu.Web</name>
+    </assembly>
+    <members>
+        <member name="M:BoboTu.Web.Controllers.OpinionsController.GetOpinions(System.Int32)">
+            <summary>
+            Get all opinions
+            </summary>
+            <param name="venueId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BoboTu.Web.Controllers.VenuesController.GetVenues(System.String,System.String)">
+            <summary>
+            Get All venues
+            </summary>
+            <param name="facilityIds"></param>
+            <param name="venueTypeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BoboTu.Web.Controllers.VenuesController.GetVenue(System.Int32)">
+            <summary>
+            Get venue by id
+            </summary>
+            <param name="venueId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BoboTu.Web.Controllers.VenuesController.CreateVenue(BoboTu.Web.Dtos.VenueForCreationDto)">
+            <summary>
+            Create new venue
+            </summary>
+            <param name="venue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BoboTu.Web.Controllers.VenuesController.UpdateVenue(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{BoboTu.Web.Dtos.VenueForUpdate})">
+            <summary>
+            Update venue with specific properties
+            </summary>
+            <param name="venueId"></param>
+            <param name="patchDocument"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
